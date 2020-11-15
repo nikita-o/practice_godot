@@ -12,6 +12,7 @@ var path: Array
 func _ready():
 	position_cell = Vector2(int(position.x / 32), int(position.y / 32))
 	self.connect("select_mob", get_node("/root/Game"), "_Select_Mob", [self])
+	get_node("/root/Game").connect("click_cell", self, "_click_cell")
 	set_process(false)
 
 var p = step
@@ -27,6 +28,8 @@ func _process(delta):
 			return
 		s = path.pop_back()
 		p = 0
+		return
+	
 	match s:
 			0: position += Vector2(speed, 0) 		# ->
 			1: position += Vector2(-speed, 0) 		# <-
@@ -37,15 +40,9 @@ func _process(delta):
 			6: position += Vector2(speed, -speed) 	# \/ <-
 			7: position += Vector2(-speed, speed) 	# /\ ->
 
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.pressed && event.button_index == BUTTON_LEFT:
-			var mouse_pos = get_global_mouse_position() / 32
-			mouse_pos = Vector2(int(mouse_pos.x) , int(mouse_pos.y))
-			var player_pos = position / 32
-			player_pos = Vector2(int(player_pos.x) , int(player_pos.y))
-			if mouse_pos == player_pos:
-				emit_signal("select_mob")
+func _click_cell(pos):
+	if pos == position_cell:
+		emit_signal("select_mob")
 
 func move(path):
 	if !self.path.empty():
