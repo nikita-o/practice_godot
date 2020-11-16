@@ -606,6 +606,33 @@ polygon = PoolVector2Array( 0, 32, 32, 32, 32, 32, 0, 32 )
 
 [node name="Map" type="Node2D"]
 
+[node name="spawn_position_1" type="Position2D" parent="." groups=[
+"spawner",
+]]
+position = Vector2( 96, 224 )
+z_index = 20
+__meta__ = {
+"_gizmo_extents_": 16.0
+}
+
+[node name="spawn_position_2" type="Position2D" parent="." groups=[
+"spawner",
+]]
+position = Vector2( 224, 96 )
+z_index = 20
+__meta__ = {
+"_gizmo_extents_": 16.0
+}
+
+[node name="spawn_position_3" type="Position2D" parent="." groups=[
+"spawner",
+]]
+position = Vector2( 192, 192 )
+z_index = 20
+__meta__ = {
+"_gizmo_extents_": 16.0
+}
+
 [node name="test_mob1" parent="." instance=ExtResource( 7 )]
 position = Vector2( 752, 112 )
 z_index = 10
