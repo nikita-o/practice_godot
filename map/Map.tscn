@@ -609,7 +609,7 @@ polygon = PoolVector2Array( 0, 32, 32, 32, 32, 32, 0, 32 )
 [node name="spawn_position_1" type="Position2D" parent="." groups=[
 "spawner",
 ]]
-position = Vector2( 96, 224 )
+position = Vector2( 80, 208 )
 z_index = 20
 __meta__ = {
 "_gizmo_extents_": 16.0
@@ -618,7 +618,7 @@ __meta__ = {
 [node name="spawn_position_2" type="Position2D" parent="." groups=[
 "spawner",
 ]]
-position = Vector2( 224, 96 )
+position = Vector2( 208, 80 )
 z_index = 20
 __meta__ = {
 "_gizmo_extents_": 16.0
@@ -627,7 +627,7 @@ __meta__ = {
 [node name="spawn_position_3" type="Position2D" parent="." groups=[
 "spawner",
 ]]
-position = Vector2( 192, 192 )
+position = Vector2( 176, 176 )
 z_index = 20
 __meta__ = {
 "_gizmo_extents_": 16.0
@@ -638,10 +638,10 @@ position = Vector2( 752, 112 )
 z_index = 10
 
 [node name="test_mob2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 368, 176 )
+position = Vector2( 448, 176 )
 z_index = 10
 
-[node name="Position2D" type="Position2D" parent="."]
+[node name="Position_center" type="Position2D" parent="."]
 position = Vector2( 1134.79, 822.055 )
 z_index = 10
 __meta__ = {
