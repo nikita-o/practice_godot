@@ -634,11 +634,11 @@ __meta__ = {
 }
 
 [node name="test_mob1" parent="." instance=ExtResource( 7 )]
-position = Vector2( 752, 112 )
+position = Vector2( 1040, 240 )
 z_index = 10
 
 [node name="test_mob2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 448, 176 )
+position = Vector2( 368, 176 )
 z_index = 10
 
 [node name="Position_center" type="Position2D" parent="."]
