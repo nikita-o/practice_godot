@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1288.0
+margin_bottom = 726.0
+rect_pivot_offset = Vector2( 644, 606.2 )
+color = Color( 0.0313726, 0.027451, 0.027451, 1 )
+
+[node name="Exit" type="Button" parent="ColorRect"]
+anchor_top = 0.00218642
+anchor_bottom = 0.00218642
+margin_left = 471.175
+margin_top = 466.888
+margin_right = 823.175
+margin_bottom = 554.888
+rect_pivot_offset = Vector2( 307.03, 155.735 )
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect"]
+margin_left = 528.102
+margin_top = 178.919
+margin_right = 753.102
+margin_bottom = 224.919
+text = "login
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Authors" type="Button" parent="ColorRect"]
+margin_left = 471.175
+margin_top = 352.536
+margin_right = 823.175
+margin_bottom = 440.536
+text = "Authors"
+
+[node name="Start" type="Button" parent="ColorRect"]
+margin_left = 471.175
+margin_top = 241.159
+margin_right = 823.175
+margin_bottom = 329.159
+text = "Start"
+[connection signal="pressed" from="ColorRect/Exit" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="ColorRect/Authors" to="." method="_on_Authors_pressed"]
+[connection signal="pressed" from="ColorRect/Start" to="." method="_on_Start_pressed"]
