@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://HUD.gd" type="Script" id=1]
+
+[sub_resource type="AnimatedTexture" id=1]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 648.132, 366.972 )
+rotation = -3.14159
+scale = Vector2( 1295.26, -731.576 )
+texture = SubResource( 1 )
+
+[node name="StartButton" type="Button" parent="."]
+margin_left = 211.0
+margin_top = 141.0
+margin_right = 446.0
+margin_bottom = 177.0
+text = "START"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 264.678
+margin_top = 61.5136
+margin_right = 292.678
+margin_bottom = 86.5136
+text = "Top"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
