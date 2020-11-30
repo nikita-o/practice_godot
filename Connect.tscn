@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Connect.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1326.0
+margin_bottom = 796.0
+rect_pivot_offset = Vector2( 287.596, 39.8398 )
+color = Color( 0.337255, 0.415686, 0.14902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 465.0
+margin_top = 106.0
+margin_right = 828.0
+margin_bottom = 244.0
+text = "Write login and password"
+
+[node name="login" type="TextEdit" parent="."]
+margin_left = 361.017
+margin_top = 154.444
+margin_right = 534.017
+margin_bottom = 194.444
+
+[node name="password" type="TextEdit" parent="."]
+margin_left = 561.716
+margin_top = 151.515
+margin_right = 725.716
+margin_bottom = 191.515
+
+[node name="connect" type="Button" parent="."]
+margin_left = 478.004
+margin_top = 223.446
+margin_right = 603.004
+margin_bottom = 264.446
+text = "connect"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exit" type="Button" parent="."]
+margin_left = 472.347
+margin_top = 302.642
+margin_right = 597.347
+margin_bottom = 343.642
+text = "exit"
+[connection signal="pressed" from="connect" to="." method="_on_connect_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
