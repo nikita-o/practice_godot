@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 
 # Declare member variables here. Examples:
@@ -6,19 +6,24 @@ extends CanvasLayer
 # var b = "text"
 
 
-#signal start_game
-func new_game():
-	$StartButton.hide()
-	$Sprite.hide()
-	pass
-#func _on_StartButton_pressed():
-	#emit_signal("start_game")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$StartButton.connect("pressed",self,"new_game")
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+	#
+
+func _on_exit_pressed():
+	get_tree().quit()
+	pass # Replace with function body.
+
+
+func _on_connect_pressed():
+	print(get_node("login").text)
+	print(get_node("password").text)
+	get_tree().change_scene("res://Main.tscn")
+	pass # Replace with function body.
