@@ -19,6 +19,10 @@ config/name="practice"
 run/main_scene="res://Connect.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Connecting="*res://others_scripts/connecting.gd"
+
 [display]
 
 window/size/width=1280

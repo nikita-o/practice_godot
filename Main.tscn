@@ -47,6 +47,9 @@ margin_top = 352.536
 margin_right = 823.175
 margin_bottom = 440.536
 text = "Authors"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Start" type="Button" parent="ColorRect"]
 margin_left = 471.175
@@ -54,6 +57,9 @@ margin_top = 241.159
 margin_right = 823.175
 margin_bottom = 329.159
 text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="ColorRect/Exit" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="ColorRect/Authors" to="." method="_on_Authors_pressed"]
 [connection signal="pressed" from="ColorRect/Start" to="." method="_on_Start_pressed"]
