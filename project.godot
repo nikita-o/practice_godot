@@ -16,12 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="practice"
-run/main_scene="res://Connect.tscn"
+run/main_scene="res://Connect_menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Connecting="*res://others_scripts/connecting.gd"
+Client="*res://others_scripts/Client.gd"
 
 [display]
 
