@@ -32,14 +32,14 @@ func _process(delta):
 		return
 	
 	match s:
-			2: position += Vector2(speed, 0) 		# ->
-			1: position += Vector2(-speed, 0) 		# <-
-			4: position += Vector2(0, speed) 		# /\
-			3: position += Vector2(0, -speed) 		# \/
-			7: position += Vector2(speed, speed) 	# \/ ->
-			6: position += Vector2(-speed, -speed) 	# /\ <-
-			5: position += Vector2(speed, -speed) 	# \/ <-
-			8: position += Vector2(-speed, speed) 	# /\ ->
+			1: position += Vector2(-speed, -speed)	# left up
+			2: position += Vector2(0, -speed) 		# up
+			3: position += Vector2(speed, -speed) 	# right up
+			4: position += Vector2(speed, 0) 		# right
+			5: position += Vector2(speed, speed) 	# right down
+			6: position += Vector2(0, speed) 		# down
+			7: position += Vector2(-speed, speed) 	# left down
+			8: position += Vector2(-speed, 0) 		# left 
 
 func _click_cell(pos):
 	if pos == position_cell:

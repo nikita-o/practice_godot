@@ -33,10 +33,6 @@ func _ready():
 	Client.connect("Attack", self, "_attack")
 	Client.connect("CaptureMine", self, "_capture_mine")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed && (event.button_index == BUTTON_LEFT || event.button_index == BUTTON_RIGHT):
@@ -52,10 +48,11 @@ func _input(event):
 func c_click_cell(button, pos):
 	print(pos)
 	print(button)
+	if select_mob:
+		if !select_mob.path.empty():
+			print("NO!")
+			return
 	Client._action(button, pos, 0)
-#	if select_mob:
-#		if pos != select_mob.position_cell:
-#			move(pos)
 
 func c_spawn_unit(id):
 	Client._action(button.SpawnUnit, Vector2.ZERO, id)
@@ -82,8 +79,8 @@ func _spawn_unit(pos: Vector2, id):
 	get_node("Map").add_child(u)
 	print("Spawn unit ", id)
 
-func _upgrade_town(id):
-	pass
+func _upgrade_town(level, health):
+	print("town: ", level, " - ", health)
 
 func _market():
 	pass
@@ -95,34 +92,9 @@ func _attack():
 	pass
 
 func _capture_mine(pos):
-	print(pos)
+	print("Mine: ", pos)
 
 func _move(path):
 	select_mob.move(path)
-	pass
-#	print("Move to ", coord)
-#	var path = []
-#	var x
-#	var y
-#	var path_x = coord.x - select_mob.position_cell.x
-#	var path_y = coord.y - select_mob.position_cell.y
-#
-#	if path_x < 0: 
-#		x = 1
-#		path_x *= -1
-#	else: 
-#		x = 0
-#
-#	if path_y < 0:
-#		y = 3
-#		path_y *= -1
-#	else:
-#		y = 2
-#
-#	for i in path_x:
-#		path.push_back(x)
-#	for i in path_y:
-#		path.push_back(y)
-#	select_mob.move(path)
 
 # --------------------------- #
