@@ -1,6 +1,7 @@
 extends Node
 
 signal click_cell(pos)
+signal move_unit(pos, path)
 var unit = preload("res://mob/Mob.tscn")
 var select_mob
 
@@ -28,7 +29,7 @@ func _ready():
 	Client.connect("SelectUnit", self, "_Select_Mob")
 	Client.connect("SpawnUnit", self, "_spawn_unit")
 	Client.connect("UpgradeTown", self, "_upgrade_town")
-	Client.connect("nextTurn", self, "_next_turn")
+	Client.connect("NextTurn", self, "_next_turn")
 	Client.connect("MoveUnit", self, "_move")
 	Client.connect("Attack", self, "_attack")
 	Client.connect("CaptureMine", self, "_capture_mine")
@@ -48,10 +49,10 @@ func _input(event):
 func c_click_cell(button, pos):
 	print(pos)
 	print(button)
-	if select_mob:
-		if !select_mob.path.empty():
-			print("NO!")
-			return
+#	if select_mob:
+#		if !select_mob.path.empty():
+#			print("NO!")
+#			return
 	Client._action(button, pos, 0)
 
 func c_spawn_unit(id):
@@ -85,16 +86,14 @@ func _upgrade_town(level, health):
 func _market():
 	pass
 
-func _next_turn():
-	pass
-
 func _attack():
 	pass
 
 func _capture_mine(pos):
 	print("Mine: ", pos)
 
-func _move(path):
+func _move(pos, path):
+	emit_signal("click_cell", pos)
 	select_mob.move(path)
 
 # --------------------------- #

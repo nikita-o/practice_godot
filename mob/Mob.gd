@@ -8,6 +8,8 @@ const step = 32 / speed
 var position_cell
 var path: Array
 
+var my_owner: int
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	position_cell = Vector2(int(position.x / 32), int(position.y / 32))
@@ -27,7 +29,7 @@ func _process(delta):
 			position_cell = Vector2(int(position.x / 32), int(position.y / 32))
 			set_process(false)
 			return
-		s = path.pop_back()
+		s = path.pop_front()
 		p = 0
 		return
 	
@@ -51,7 +53,7 @@ func attack():
 	pass
 
 func move(path):
-	if !self.path.empty():
-		return
-	self.path = path
+#	if !self.path.empty():
+#		return
+	self.path += path
 	set_process(true)
