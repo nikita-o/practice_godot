@@ -37,6 +37,9 @@ margin_left = 561.716
 margin_top = 151.515
 margin_right = 725.716
 margin_bottom = 191.515
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="connect" type="Button" parent="."]
 margin_left = 478.004

@@ -23,7 +23,13 @@ func _input(event):
 			if event.position.x < get_node("/root/Game/interface/Control/Panel").get_position().x:
 				if event.position.y > get_node("/root/Game/interface/Control/Panel2").get_size().y:
 					var pos = get_node("Map").get_global_mouse_position() / 32
-					pos = Vector2(int(pos.x) , int(pos.y))
+					var a = 0
+					var b = 0
+					if int(pos.x)==0:
+						 a+=1						 
+					if int(pos.y)==0:
+						 b+=1
+					pos = Vector2(int(pos.x-a) , int(pos.y-b))
 					emit_signal("click_cell", pos)
 					_click_cell(pos)
 
