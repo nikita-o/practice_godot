@@ -6,28 +6,31 @@ var port: int = 11000
 var connection: StreamPeerTCP = StreamPeerTCP.new()
 var checkThread: Thread = Thread.new()
 var listener: Thread = Thread.new()
-#var sender: Thread = Thread.new()
 var client_name: String
 var client_password: String
+
+var id_player: int
+var turn: bool = false
 
 enum response {
 	connect = 1, 
 	accept = 3,
 	message = 4, 
-	SelectUnit = 10, 
-	MoveUnit = 11, 
-	Attack = 12, 
-	SpawnUnit = 13, 
-	UpgradeTown = 14, 
-	Market = 15, 
-	CaptureMine = 16, 
-	nextTurn = 17,
-	ErrorPocket = 8
+	InitGame = 11,
+	ErrorPocket = 10,
+	SelectUnit  = 20, 
+	MoveUnit    = 21, 
+	Attack      = 22, 
+	SpawnUnit   = 23, 
+	UpgradeTown = 24, 
+	Market      = 25, 
+	CaptureMine = 26, 
+	nextTurn    = 27,
 	}
 
 enum request {
 	connect = 1,
-	action = 7
+	action = 9
 }
 
 enum Buttons {
@@ -46,10 +49,9 @@ signal SpawnUnit(id, position, type_unit) # id player!
 signal UpgradeTown(id, level, health) # id player! (coord?)
 signal Market(pos) # id player!
 signal CaptureMine(id, position) # id player!
-signal nextTurn(id) # id player!
 
-#func _ready():
-#	pass
+func _ready():
+	pass
 
 func connect_to_server():
 	var m: String
@@ -71,64 +73,88 @@ func connect_to_server():
 		print(m % [host, port])
 		yield(get_tree().create_timer(1.0), "timeout")
 	print("Connect!")
-	get_tree().change_scene("res://Main.tscn")
 
 func _checkConnect(prm):
 	while (true):
 		# ping
 		if connection.get_status() != StreamPeerTCP.STATUS_CONNECTED:
-			print("Lost connect!")
+#			print("Lost connect!")
 			listener.wait_to_finish()
 			get_tree().quit()
 			# reconnect? || error
 		else:
-			print("Good connect!")
+			pass
+#			print("Good connect!")
 		yield(get_tree().create_timer(3.0), "timeout")
 
 func _listener(d):
 	while connection.get_status() == StreamPeerTCP.STATUS_CONNECTED:
 		var _hash = connection.get_32()
+		print("________________")
 		print("_hash: ", _hash)
 		var _id = connection.get_32()
 		print("_id: ", _id)
 		var pac = connection.get_32()
 		print("Packet: ", pac)
-		var count = connection.get_32()
-		print("count: ", count)
+		var size = connection.get_32()
+		print("Size: ", size)
+		print("================")
 		match pac:
 			response.accept:
-				pass
+				var huynya = connection.get_32()
 			response.connect:
 				var Name = connection.get_string()
 				var Message = connection.get_string()
+				
 				print("connect")
 				get_tree().change_scene("res://Main_menu.tscn")
+			response.InitGame:
+				var id = connection.get_32()
+				
+				print("InitGame: ", id)
+				id_player = id
 			response.message:
 				print("message")
 			response.SelectUnit:
 				var id = connection.get_32()
 				var position = Vector2(connection.get_32(), connection.get_32())
+				
 				print("SelectUnit")
 				emit_signal("SelectUnit", position)
 			response.MoveUnit:
 				var id = connection.get_32()
+				var position = Vector2(connection.get_32(), connection.get_32())
+				var cost = connection.get_32()
 				var path = []
 				for j in connection.get_32():
 					path.push_back(connection.get_32())
+				
 				print("MoveUnit")
 				print(path)
-				emit_signal("MoveUnit", path)
+				emit_signal("MoveUnit", position, path)
 			response.Attack:
 				var atack_id = connection.get_32()
 				var atack_position = Vector2(connection.get_32(), connection.get_32())
+				var atack_health = connection.get_32()
 				var defens_id = connection.get_32()
 				var defens_position = Vector2(connection.get_32(), connection.get_32())
-				print("Attack")
-				emit_signal("Attack")
+				var defens_health = connection.get_32()
+				
+				print("Attack", defens_health, defens_position)
+				emit_signal("Attack", defens_health, defens_position)
 			response.SpawnUnit:
 				var id = connection.get_32()
 				var position = Vector2(connection.get_32(), connection.get_32())
 				var type_unit = connection.get_32()
+				
+				var attack = connection.get_32()
+				var defense = connection.get_32()
+				var damage = connection.get_32()
+				var health = connection.get_32()
+				var MAXactionPoints = connection.get_32()
+				var rangeAttack = connection.get_32()
+				var shootingDamage = connection.get_32()
+				
 				print(position)
 				print("SpawnUnit")
 				emit_signal("SpawnUnit", position, type_unit)
@@ -136,6 +162,7 @@ func _listener(d):
 				var id = connection.get_32()
 				var level = connection.get_32()
 				var health = connection.get_32()
+				
 				print("UpgradeTown")
 				emit_signal("UpgradeTown", level, health)
 			response.Market:
@@ -144,24 +171,35 @@ func _listener(d):
 			response.CaptureMine:
 				var id = connection.get_32()
 				var position = Vector2(connection.get_32(), connection.get_32())
+				var type_cave = connection.get_32()
+				
 				print("CaptureMine")
 				emit_signal("CaptureMine", position)
 			response.nextTurn:
 				var id = connection.get_32()
-				print("nextTurn")
-				emit_signal("nextTurn")
+				var gold = connection.get_32()
+				var wood = connection.get_32()
+				var rock = connection.get_32()
+				var crystall = connection.get_32()
+				
+				print("nextTurn: ", id, " ME ", id_player)
+				if id_player == id:
+					turn = true
+				else:
+					turn = false
 			response.ErrorPocket:
 				var id_error = connection.get_32()
 				var error_message = connection.get_string()
+				
 				print("ErrorPocket: ", id_error, " mes: ", error_message)
+		print("________________\n")
 
-func send_packet(type, count, data):
+func send_packet(type, count, data: StreamPeerBuffer):
 	var buffer = StreamPeerBuffer.new()
-	
 	buffer.put_32(332) # hash (not work)
-	buffer.put_32(8888) # id (not work)
+	buffer.put_32(OS.get_unix_time()) # id (not work)
 	buffer.put_32(type) # type packet
-	buffer.put_32(count) # count packets
+	buffer.put_32(data.get_size()) # size packets
 	buffer.put_data(data.data_array) # data in packet
 	connection.put_data(buffer.data_array) # send to server
 
@@ -175,6 +213,9 @@ func auth():
 
 
 func _action(button: int, pos: Vector2, param: int):
+	if !turn: 
+		print("not our turn!")
+		return
 	var data = StreamPeerBuffer.new()
 	data.put_32(button)
 	data.put_32(pos.x)

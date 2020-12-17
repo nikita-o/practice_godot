@@ -1,8 +1,10 @@
 extends Node
 
 signal click_cell(pos)
+signal move_unit(pos, path)
 var unit = preload("res://mob/Mob.tscn")
-var select_mob
+var my_unit: Node
+var select_mob: Node
 
 enum button {
 	Left = 1,
@@ -28,7 +30,7 @@ func _ready():
 	Client.connect("SelectUnit", self, "_Select_Mob")
 	Client.connect("SpawnUnit", self, "_spawn_unit")
 	Client.connect("UpgradeTown", self, "_upgrade_town")
-	Client.connect("nextTurn", self, "_next_turn")
+	Client.connect("NextTurn", self, "_next_turn")
 	Client.connect("MoveUnit", self, "_move")
 	Client.connect("Attack", self, "_attack")
 	Client.connect("CaptureMine", self, "_capture_mine")
@@ -48,10 +50,10 @@ func _input(event):
 func c_click_cell(button, pos):
 	print(pos)
 	print(button)
-	if select_mob:
-		if !select_mob.path.empty():
-			print("NO!")
-			return
+#	if select_mob:
+#		if !select_mob.path.empty():
+#			print("NO!")
+#			return
 	Client._action(button, pos, 0)
 
 func c_spawn_unit(id):
@@ -70,6 +72,7 @@ func c_market():
 
 func _Select_Mob(pos):
 	emit_signal("click_cell", pos)
+	my_unit = select_mob
 
 func _spawn_unit(pos: Vector2, id):
 	var u = unit.instance()
@@ -85,16 +88,18 @@ func _upgrade_town(level, health):
 func _market():
 	pass
 
-func _next_turn():
-	pass
-
-func _attack():
-	pass
+func _attack(d2, pos):
+	print("!!!!!!!!!!!!!!!!!!!!!!")
+	print(d2)
+	print(pos)
+	if (d2 == 0):
+		emit_signal("click_cell", pos)
+		get_node("Map").remove_child(select_mob)
 
 func _capture_mine(pos):
 	print("Mine: ", pos)
 
-func _move(path):
-	select_mob.move(path)
+func _move(pos, path):
+	my_unit.move(path)
 
 # --------------------------- #
