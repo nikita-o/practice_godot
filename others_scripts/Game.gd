@@ -3,7 +3,8 @@ extends Node
 signal click_cell(pos)
 signal move_unit(pos, path)
 var unit = preload("res://mob/Mob.tscn")
-var select_mob
+var my_unit: Node
+var select_mob: Node
 
 enum button {
 	Left = 1,
@@ -71,6 +72,7 @@ func c_market():
 
 func _Select_Mob(pos):
 	emit_signal("click_cell", pos)
+	my_unit = select_mob
 
 func _spawn_unit(pos: Vector2, id):
 	var u = unit.instance()
@@ -86,14 +88,18 @@ func _upgrade_town(level, health):
 func _market():
 	pass
 
-func _attack():
-	pass
+func _attack(d2, pos):
+	print("!!!!!!!!!!!!!!!!!!!!!!")
+	print(d2)
+	print(pos)
+	if (d2 == 0):
+		emit_signal("click_cell", pos)
+		get_node("Map").remove_child(select_mob)
 
 func _capture_mine(pos):
 	print("Mine: ", pos)
 
 func _move(pos, path):
-	emit_signal("click_cell", pos)
-	select_mob.move(path)
+	my_unit.move(path)
 
 # --------------------------- #
