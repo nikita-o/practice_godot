@@ -42,7 +42,13 @@ func _input(event):
 			if event.position.x < get_node("/root/Game/interface/Control/Panel").get_position().x:
 				if event.position.y > get_node("/root/Game/interface/Control/Panel2").get_size().y:
 					var pos = get_node("Map").get_global_mouse_position() / 32
-					pos = Vector2(int(pos.x) , int(pos.y))
+					var a = 0
+					var b = 0
+					if (int(pos.x)==0):
+						a-=1
+					if (int(pos.y)==0):
+						b-=1
+					pos = Vector2(int(pos.x+a) , int(pos.y+b))
 					c_click_cell(event.button_index, pos)
 
 # --------------------------- #
@@ -79,6 +85,8 @@ func _spawn_unit(pos: Vector2, id):
 	print(pos)
 	u.position = Vector2(pos.x * 32 + 16, pos.y * 32 + 16)
 	u.name = "lol"
+	u._initiz(id)
+	$interface/Control/Panel/Panel/health.text ="10"
 	get_node("Map").add_child(u)
 	print("Spawn unit ", id)
 

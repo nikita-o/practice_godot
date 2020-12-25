@@ -8,7 +8,40 @@ const step = 32 / speed
 var position_cell
 var path: Array
 
+var Animate:AnimatedSprite
+
 var my_owner: int
+
+
+func _initiz(id):
+	match id:
+		0: 	
+			Animate = $Scout		
+			print("0")
+		1: 		
+			Animate = $Warrior1	
+			print("1")
+		2: 
+			Animate = $Shooter1	
+			print("2")
+		3: 
+			Animate = $Warrior2	
+			print("3")
+		4: 
+			Animate = $Shooter2	
+			print("4")
+		5: 
+			Animate = $Warrior3	
+			print("5")
+		6: 
+			Animate = $Shooter3	
+			print("6")
+		7: 
+			Animate = $Top_unit	
+			print("7")
+	Animate.visible = true
+	Animate.play("default")
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,14 +67,28 @@ func _process(delta):
 		return
 	
 	match s:
-			1: position += Vector2(-speed, -speed)	# left up
-			2: position += Vector2(0, -speed) 		# up
-			3: position += Vector2(speed, -speed) 	# right up
-			4: position += Vector2(speed, 0) 		# right
-			5: position += Vector2(speed, speed) 	# right down
-			6: position += Vector2(0, speed) 		# down
-			7: position += Vector2(-speed, speed) 	# left down
-			8: position += Vector2(-speed, 0) 		# left 
+			1: 
+				Animate.flip_h = true
+				position += Vector2(-speed, -speed)	# left up
+			2: 
+				position += Vector2(0, -speed) 		# up
+			3: 
+				Animate.flip_h = false
+				position += Vector2(speed, -speed) 	# right up
+			4: 
+				Animate.flip_h = false
+				position += Vector2(speed, 0) 		# right
+			5: 
+				Animate.flip_h = false
+				position += Vector2(speed, speed) 	# right down
+			6: 
+				position += Vector2(0, speed) 		# down
+			7: 
+				Animate.flip_h = true
+				position += Vector2(-speed, speed) 	# left down
+			8:
+				Animate.flip_h = true
+				position += Vector2(-speed, 0) 		# left 
 
 func _click_cell(pos):
 	if pos == position_cell:
