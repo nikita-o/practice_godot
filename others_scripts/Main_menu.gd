@@ -7,7 +7,8 @@ func _on_Button_pressed():
 
 func _on_Start_pressed():
 	print("New Game!")
-	get_tree().change_scene("res://Game.tscn")
+	Client.start_game()
+#	get_tree().change_scene("res://Game.tscn")
 
 func _on_Authors_pressed():
 	print("dayni")
