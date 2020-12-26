@@ -119,6 +119,7 @@ func _listener(d):
 			response.Ping:
 				var Tick = connection.get_32()
 				var LastPing = connection.get_32()
+				print("ПИНГУЮТ СУКИ")
 			response.InitGame:
 				var id = connection.get_32()
 				print("InitGame: ", id)

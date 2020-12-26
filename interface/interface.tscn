@@ -134,7 +134,7 @@ margin_top = 39.0
 margin_right = 632.0
 margin_bottom = 542.0
 rect_scale = Vector2( 0.095, 0.1 )
-icon = ExtResource( 2 )
+icon = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -147,7 +147,7 @@ margin_top = 100.0
 margin_right = 600.0
 margin_bottom = 622.0
 rect_scale = Vector2( 0.087, 0.1 )
-icon = ExtResource( 1 )
+icon = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -159,6 +159,8 @@ margin_left = 99.0
 margin_top = 99.0
 margin_right = 149.0
 margin_bottom = 149.0
+rect_scale = Vector2( 0.1, 0.085 )
+icon = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -171,7 +173,6 @@ margin_top = 159.0
 margin_right = 573.0
 margin_bottom = 753.0
 rect_scale = Vector2( 0.1, 0.085 )
-icon = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -183,6 +184,8 @@ margin_left = 99.0
 margin_top = 159.0
 margin_right = 149.0
 margin_bottom = 209.0
+rect_scale = Vector2( 0.087, 0.1 )
+icon = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -195,7 +198,6 @@ margin_top = 220.0
 margin_right = 771.0
 margin_bottom = 780.0
 rect_scale = Vector2( 0.075, 0.09 )
-icon = ExtResource( 6 )
 
 [node name="Button8" type="Button" parent="Control/Panel" groups=[
 "spawn_button",
