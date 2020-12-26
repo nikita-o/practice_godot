@@ -18,8 +18,9 @@ enum response {
 	accept = 3,
 	message = 4, 
 	Ping = 5,
-	InitGame = 11,
 	ErrorPocket = 10,
+	InitGame = 11,
+	EndGame = 13,
 	SelectUnit  = 20, 
 	MoveUnit    = 21, 
 	Attack      = 22, 
@@ -28,6 +29,7 @@ enum response {
 	Market      = 25, 
 	CaptureMine = 26, 
 	nextTurn    = 27,
+	Resources	= 28,
 	}
 
 enum request {
@@ -54,8 +56,7 @@ signal Market(pos) # id player!
 signal CaptureMine(id, position) # id player!
 
 func _ready():
-	var e = 1
-	var t = 123
+	print(123)
 	pass
 
 func _process(delta):
@@ -86,7 +87,7 @@ func disconnect_server():
 	listener.wait_to_finish()
 	checkThread.wait_to_finish()
 	get_tree().change_scene("res://Connect_menu.tscn")
-	get_tree().quit()
+#	get_tree().quit()
 
 func _checkConnect(prm):
 	while (true):
@@ -122,6 +123,10 @@ func _listener(d):
 				print("InitGame: ", id)
 				id_player = id
 				get_tree().change_scene("res://Game.tscn")
+			response.EndGame:
+				var id = connection.get_32()
+				var place = connection.get_32()
+				print("END GAME!!! ", id, " ", place)
 			response.message:
 				print("message")
 			response.SelectUnit:
@@ -167,7 +172,7 @@ func _listener(d):
 				
 				print(position)
 				print("SpawnUnit")
-				self.call_deferred("emit_signal", "SpawnUnit", position, type_unit) #emit_signal("SpawnUnit", position, type_unit)
+				self.call_deferred("emit_signal", "SpawnUnit", position, type_unit)
 			response.UpgradeTown:
 				var id = connection.get_32()
 				var level = connection.get_32()
@@ -182,16 +187,21 @@ func _listener(d):
 				var id = connection.get_32()
 				var position = Vector2(connection.get_32(), connection.get_32())
 				var type_cave = connection.get_32()
-				
 				print("CaptureMine")
 				self.call_deferred("emit_signal","CaptureMine", position)
-			response.nextTurn:
+			response.Resources:
 				var id = connection.get_32()
 				var gold = connection.get_32()
 				var wood = connection.get_32()
 				var rock = connection.get_32()
 				var crystall = connection.get_32()
-				
+				print("Resources: ")
+				print("gold: ", gold)
+				print("wood: ", wood)
+				print("rock: ", rock)
+				print("crystall: ", crystall)
+			response.nextTurn:
+				var id = connection.get_32()
 				print("nextTurn: ", id, " ME ", id_player)
 				if id_player == id:
 					turn = true

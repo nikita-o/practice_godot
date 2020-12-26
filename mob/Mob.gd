@@ -59,7 +59,6 @@ func _process(delta):
 		p += 1
 	else:
 		if path.empty():
-			position_cell = Vector2(int(position.x / 32), int(position.y / 32))
 			set_process(false)
 			return
 		s = path.pop_front()
@@ -99,8 +98,7 @@ func _click_cell(pos):
 func attack():
 	pass
 
-func move(path):
-#	if !self.path.empty():
-#		return
+func move(pos, path):
+	position_cell = pos
 	self.path += path
 	set_process(true)

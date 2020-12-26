@@ -108,6 +108,6 @@ func _capture_mine(pos):
 	print("Mine: ", pos)
 
 func _move(pos, path):
-	my_unit.move(path)
+	my_unit.move(pos, path)
 
 # --------------------------- #
