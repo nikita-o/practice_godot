@@ -79,6 +79,7 @@ func _spawn_unit(pos: Vector2, id):
 	print(pos)
 	u.position = Vector2(pos.x * 32 + 16, pos.y * 32 + 16)
 	u.name = "lol"
+	$interface/Control/Panel2/Gold.text = "123"
 	get_node("Map").add_child(u)
 	print("Spawn unit ", id)
 
@@ -100,6 +101,6 @@ func _capture_mine(pos):
 	print("Mine: ", pos)
 
 func _move(pos, path):
-	my_unit.move(path)
+	my_unit.move(pos, path)
 
 # --------------------------- #
