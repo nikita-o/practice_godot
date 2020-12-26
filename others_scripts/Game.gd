@@ -34,6 +34,7 @@ func _ready():
 	Client.connect("MoveUnit", self, "_move")
 	Client.connect("Attack", self, "_attack")
 	Client.connect("CaptureMine", self, "_capture_mine")
+	Client.connect("UpdateResources", self, "update_resources")
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -54,12 +55,6 @@ func _input(event):
 # --------------------------- #
 
 func c_click_cell(button, pos):
-	print(pos)
-	print(button)
-#	if select_mob:
-#		if !select_mob.path.empty():
-#			print("NO!")
-#			return
 	Client._action(button, pos, 0)
 
 func c_spawn_unit(id):
@@ -79,14 +74,25 @@ func c_market():
 func _Select_Mob(pos):
 	emit_signal("click_cell", pos)
 	my_unit = select_mob
+	$interface/Control/Panel/Panel/attack.text = String(my_unit.attack)
+	$interface/Control/Panel/Panel/defense.text = String(my_unit.defense)
+	$interface/Control/Panel/Panel/damage.text = String(my_unit.damage)
+	$interface/Control/Panel/Panel/health.text = String(my_unit.health)
+	$interface/Control/Panel/Panel/actionPoints.text = String(my_unit.actionPoints)
+	$interface/Control/Panel/Panel/rangeAttack.text = String(my_unit.rangeAttack)
+	$interface/Control/Panel/Panel/shootingDamage.text = String(my_unit.shootingDamage)
 
-func _spawn_unit(pos: Vector2, id):
+func _spawn_unit(pos: Vector2, id, attack, defense, damage, health, actionPoints, rangeAttack, shootingDamage):
 	var u = unit.instance()
-	print(pos)
 	u.position = Vector2(pos.x * 32 + 16, pos.y * 32 + 16)
-	u.name = "lol"
+	u.attack = attack
+	u.defense = defense
+	u.damage = damage
+	u.health = health
+	u.actionPoints = actionPoints
+	u.rangeAttack = rangeAttack
+	u.shootingDamage = shootingDamage
 	u._initiz(id)
-	$interface/Control/Panel/Panel/health.text ="10"
 	get_node("Map").add_child(u)
 	print("Spawn unit ", id)
 
@@ -97,9 +103,7 @@ func _market():
 	pass
 
 func _attack(d2, pos):
-	print("!!!!!!!!!!!!!!!!!!!!!!")
-	print(d2)
-	print(pos)
+	print("hp vrag: ", d2)
 	if (d2 == 0):
 		emit_signal("click_cell", pos)
 		get_node("Map").remove_child(select_mob)
@@ -107,7 +111,14 @@ func _attack(d2, pos):
 func _capture_mine(pos):
 	print("Mine: ", pos)
 
-func _move(pos, path):
+func _move(pos, path, actionPoints):
+	my_unit.actionPoints = actionPoints
+	$interface/Control/Panel/Panel/actionPoints.text = String(my_unit.actionPoints)
 	my_unit.move(pos, path)
 
+func update_resources(Gold, Wood, Rock, Crystall):
+	$interface/Control/Panel2/Gold.text = String(Gold)
+	$interface/Control/Panel2/Wood.text = String(Wood)
+	$interface/Control/Panel2/Rock.text = String(Rock)
+	$interface/Control/Panel2/Crystal.text = String(Crystall)
 # --------------------------- #

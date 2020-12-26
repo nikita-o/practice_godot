@@ -54,6 +54,7 @@ signal SpawnUnit(id, position, type_unit) # id player!
 signal UpgradeTown(id, level, health) # id player! (coord?)
 signal Market(pos) # id player!
 signal CaptureMine(id, position) # id player!
+signal UpdateResources(id, Gold, Wood, Rock, Crystall)
 
 func _ready():
 	print(123)
@@ -99,14 +100,14 @@ func _checkConnect(prm):
 
 func _listener(d):
 	while connection.get_status() == StreamPeerTCP.STATUS_CONNECTED:
-		print("________________")
+#		print("________________")
 		var _id = connection.get_32()
-		print("_id: ", _id)
+#		print("_id: ", _id)
 		var pac = connection.get_32()
-		print("Packet: ", pac)
+#		print("Packet: ", pac)
 		var size = connection.get_32()
-		print("Size: ", size)
-		print("================")
+#		print("Size: ", size)
+#		print("================")
 		match pac:
 			response.accept:
 				var huynya = connection.get_32()
@@ -132,21 +133,17 @@ func _listener(d):
 			response.SelectUnit:
 				var id = connection.get_32()
 				var position = Vector2(connection.get_32(), connection.get_32())
-				
 				print("SelectUnit")
-				#emit_signal("SelectUnit", position)
 				self.call_deferred("emit_signal", "SelectUnit", position)
 			response.MoveUnit:
 				var id = connection.get_32()
 				var position = Vector2(connection.get_32(), connection.get_32())
-				var cost = connection.get_32()
+				var actionPoints = connection.get_32()
 				var path = []
 				for j in connection.get_32():
 					path.push_back(connection.get_32())
-				
 				print("MoveUnit")
-				print(path)
-				self.call_deferred("emit_signal", "MoveUnit", position,path)
+				self.call_deferred("emit_signal", "MoveUnit", position, path, actionPoints)
 			response.Attack:
 				var atack_id = connection.get_32()
 				var atack_position = Vector2(connection.get_32(), connection.get_32())
@@ -154,14 +151,12 @@ func _listener(d):
 				var defens_id = connection.get_32()
 				var defens_position = Vector2(connection.get_32(), connection.get_32())
 				var defens_health = connection.get_32()
-				
 				print("Attack", defens_health, defens_position)
 				self.call_deferred("emit_signal", "Attack",defens_health, defens_position)
 			response.SpawnUnit:
 				var id = connection.get_32()
 				var position = Vector2(connection.get_32(), connection.get_32())
 				var type_unit = connection.get_32()
-				
 				var attack = connection.get_32()
 				var defense = connection.get_32()
 				var damage = connection.get_32()
@@ -169,15 +164,12 @@ func _listener(d):
 				var MAXactionPoints = connection.get_32()
 				var rangeAttack = connection.get_32()
 				var shootingDamage = connection.get_32()
-				
-				print(position)
 				print("SpawnUnit")
-				self.call_deferred("emit_signal", "SpawnUnit", position, type_unit)
+				self.call_deferred("emit_signal", "SpawnUnit", position, type_unit, attack, defense, damage, health, MAXactionPoints, rangeAttack, shootingDamage)
 			response.UpgradeTown:
 				var id = connection.get_32()
 				var level = connection.get_32()
 				var health = connection.get_32()
-				
 				print("UpgradeTown")
 				self.call_deferred("emit_signal","UpgradeTown", level, health)
 			response.Market:
@@ -195,11 +187,7 @@ func _listener(d):
 				var wood = connection.get_32()
 				var rock = connection.get_32()
 				var crystall = connection.get_32()
-				print("Resources: ")
-				print("gold: ", gold)
-				print("wood: ", wood)
-				print("rock: ", rock)
-				print("crystall: ", crystall)
+				self.call_deferred("emit_signal","UpdateResources", gold, wood, rock, crystall)
 			response.nextTurn:
 				var id = connection.get_32()
 				print("nextTurn: ", id, " ME ", id_player)
@@ -212,7 +200,7 @@ func _listener(d):
 				var error_message = connection.get_string()
 				
 				print("ErrorPocket: ", id_error, " mes: ", error_message)
-		print("________________\n")
+#		print("________________\n")
 
 func send_packet(type, data: StreamPeerBuffer):
 	var buffer = StreamPeerBuffer.new()

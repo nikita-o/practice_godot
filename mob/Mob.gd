@@ -12,8 +12,17 @@ var Animate:AnimatedSprite
 
 var my_owner: int
 
+var type_unit
+var attack
+var defense
+var damage
+var health
+var actionPoints
+var rangeAttack
+var shootingDamage
 
 func _initiz(id):
+	print("SPAWNER:")
 	match id:
 		0: 	
 			Animate = $Scout		
@@ -92,8 +101,6 @@ func _process(delta):
 func _click_cell(pos):
 	if pos == position_cell:
 		get_node("/root/Game").select_mob = self
-		print("Select: ", get_node("/root/Game").select_mob.name)
-#		emit_signal("select_mob")
 
 func attack():
 	pass
