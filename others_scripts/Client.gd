@@ -134,7 +134,8 @@ func _listener(d):
 				var position = Vector2(connection.get_32(), connection.get_32())
 				
 				print("SelectUnit")
-				emit_signal("SelectUnit", position)
+				#emit_signal("SelectUnit", position)
+				self.call_deferred("emit_signal", "SelectUnit", position)
 			response.MoveUnit:
 				var id = connection.get_32()
 				var position = Vector2(connection.get_32(), connection.get_32())
@@ -145,7 +146,7 @@ func _listener(d):
 				
 				print("MoveUnit")
 				print(path)
-				emit_signal("MoveUnit", position, path)
+				self.call_deferred("emit_signal", "MoveUnit", position,path)
 			response.Attack:
 				var atack_id = connection.get_32()
 				var atack_position = Vector2(connection.get_32(), connection.get_32())
@@ -155,7 +156,7 @@ func _listener(d):
 				var defens_health = connection.get_32()
 				
 				print("Attack", defens_health, defens_position)
-				emit_signal("Attack", defens_health, defens_position)
+				self.call_deferred("emit_signal", "Attack",defens_health, defens_position)
 			response.SpawnUnit:
 				var id = connection.get_32()
 				var position = Vector2(connection.get_32(), connection.get_32())
@@ -178,17 +179,16 @@ func _listener(d):
 				var health = connection.get_32()
 				
 				print("UpgradeTown")
-				emit_signal("UpgradeTown", level, health)
+				self.call_deferred("emit_signal","UpgradeTown", level, health)
 			response.Market:
 				print("Market")
-				emit_signal("Market")
+				self.call_deferred("emit_signal","Market")
 			response.CaptureMine:
 				var id = connection.get_32()
 				var position = Vector2(connection.get_32(), connection.get_32())
 				var type_cave = connection.get_32()
-				
 				print("CaptureMine")
-				emit_signal("CaptureMine", position)
+				self.call_deferred("emit_signal","CaptureMine", position)
 			response.Resources:
 				var id = connection.get_32()
 				var gold = connection.get_32()
