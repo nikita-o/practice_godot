@@ -8,7 +8,10 @@ var SIZE_MAP_X = 2500
 var SIZE_MAP_Y = 1700
 
 func _ready():
-	pass
+	if (Client.id_player == 0):
+		position = Vector2(180, 180)
+	else:
+		position = Vector2(2100, 1450)
 
 func _process(delta):
 	var pos = get_global_mouse_position()

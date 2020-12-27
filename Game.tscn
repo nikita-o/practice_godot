@@ -34,7 +34,7 @@ script = ExtResource( 6 )
 script = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 272, 192 )
+position = Vector2( 2100, 1450 )
 rotating = true
 current = true
 zoom = Vector2( 0.5, 0.5 )

@@ -1,7 +1,6 @@
 extends Node
 
 signal click_cell(pos)
-signal move_unit(pos, path)
 var unit = preload("res://mob/Mob.tscn")
 var my_unit: Node
 var select_mob: Node
@@ -20,21 +19,18 @@ func _ready():
 	for i in get_tree().get_nodes_in_group("spawn_button"):
 		i.connect("pressed", self, "c_spawn_unit", [id])
 		id += 1
-	id = 0
-	for i in get_tree().get_nodes_in_group("upgrade_town_button"):
-		i.connect("pressed", self, "c_upgrade_town", [id])
-		id += 1
+	get_tree().get_nodes_in_group("upgrade_town_button")[0].connect("pressed", self, "c_upgrade_town")
 	get_tree().get_nodes_in_group("next_turn")[0].connect("pressed", self, "c_next_turn")
-	
-	Client.connect("Market", self, "_market")
-	Client.connect("SelectUnit", self, "_Select_Mob")
-	Client.connect("SpawnUnit", self, "_spawn_unit")
-	Client.connect("UpgradeTown", self, "_upgrade_town")
-	Client.connect("MoveUnit", self, "_move")
-	Client.connect("Attack", self, "_attack")
-	Client.connect("CaptureMine", self, "_capture_mine")
-	Client.connect("UpdateResources", self, "update_resources")
-	Client.connect("AttackTown", self, "attack_town")
+	var _error
+	_error = Client.connect("Market", self, "_market")
+	_error = Client.connect("SelectUnit", self, "_Select_Mob")
+	_error = Client.connect("SpawnUnit", self, "_spawn_unit")
+	_error = Client.connect("UpgradeTown", self, "_upgrade_town")
+	_error = Client.connect("MoveUnit", self, "_move")
+	_error = Client.connect("Attack", self, "_attack")
+	_error = Client.connect("CaptureMine", self, "_capture_mine")
+	_error = Client.connect("UpdateResources", self, "update_resources")
+	_error = Client.connect("AttackTown", self, "attack_town")
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -60,7 +56,7 @@ func c_click_cell(button, pos):
 func c_spawn_unit(id):
 	Client._action(button.SpawnUnit, Vector2.ZERO, id)
 
-func c_upgrade_town(id):
+func c_upgrade_town():
 	Client._action(button.UpgradeTown, Vector2.ZERO, 0)
 
 func c_next_turn():
@@ -72,6 +68,7 @@ func c_market():
 # --------------------------- #
 
 func _Select_Mob(pos):
+	print("\tSelectUnit: ", pos)
 	emit_signal("click_cell", pos)
 	my_unit = select_mob
 	$interface/Control/Panel/Panel/attack.text = String(my_unit.attack)
@@ -95,32 +92,37 @@ func _spawn_unit(pos: Vector2, id, attack, defense, damage, health, actionPoints
 	u.get_node("Label").text = String(u.health)
 	u._initiz(id)
 	get_node("Map").add_child(u)
-	print("Spawn unit ", id)
+	print("\tSpawn unit ", id)
 
 func _upgrade_town(level, health):
-	print("town: ", level, " - ", health)
+	print("\tupgrade town! lvl = ", level, ", health = ", health)
 
 func _market():
 	pass
 
-func _attack(d2, pos):
-	print("hp vrag: ", d2)
-	if (d2 == 0):
-		emit_signal("click_cell", pos)
+func _attack(defens_health, defens_position):
+	print("\tAttack: ", defens_position)
+	print("\thp enemy: ", defens_health)
+	emit_signal("click_cell", defens_position)
+	select_mob.health = defens_health
+	select_mob.get_node("Label").text = String(select_mob.health)
+	if (defens_health == 0):
 		get_node("Map").remove_child(select_mob)
 
 func attack_town(health_town):
-	print("Town hp = ", health_town)
+	print("\tTown hp = ", health_town)
 
 func _capture_mine(pos):
-	print("Mine: ", pos)
+	print("\tcapture mine: ", pos)
 
 func _move(pos, path, actionPoints):
+	print("\tMoveUnit")
 	my_unit.actionPoints = actionPoints
 	$interface/Control/Panel/Panel/actionPoints.text = String(my_unit.actionPoints)
 	my_unit.move(pos, path)
 
 func update_resources(Gold, Wood, Rock, Crystall):
+	print("\tupdate resources")
 	$interface/Control/Panel2/Gold.text = String(Gold)
 	$interface/Control/Panel2/Wood.text = String(Wood)
 	$interface/Control/Panel2/Rock.text = String(Rock)

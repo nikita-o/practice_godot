@@ -20,37 +20,26 @@ var rangeAttack
 var shootingDamage
 
 func _initiz(id):
-	print("SPAWNER:")
 	match id:
-		0: 	
-			Animate = $Scout		
-			print("0")
-		1: 		
-			Animate = $Warrior1	
-			print("1")
+		0: 
+			Animate = $Scout
+		1: 
+			Animate = $Warrior1
 		2: 
-			Animate = $Shooter1	
-			print("2")
+			Animate = $Shooter1
 		3: 
-			Animate = $Warrior2	
-			print("3")
+			Animate = $Warrior2
 		4: 
-			Animate = $Shooter2	
-			print("4")
+			Animate = $Shooter2
 		5: 
-			Animate = $Warrior3	
-			print("5")
+			Animate = $Warrior3
 		6: 
-			Animate = $Shooter3	
-			print("6")
+			Animate = $Shooter3
 		7: 
-			Animate = $Top_unit	
-			print("7")
+			Animate = $Top_unit
 	Animate.visible = true
 	Animate.play("default")
-	pass
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	position_cell = Vector2(int(position.x / 32), int(position.y / 32))
 	self.connect("select_mob", get_node("/root/Game"), "_Select_Mob", [self])
@@ -59,7 +48,6 @@ func _ready():
 
 var p = step
 var s
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if p < step:
 		p += 1
@@ -99,10 +87,10 @@ func _click_cell(pos):
 	if pos == position_cell:
 		get_node("/root/Game").select_mob = self
 
-func attack():
-	pass
+#func attack():
+#	pass
 
-func move(pos, path):
+func move(pos, _path):
 	position_cell = pos
-	self.path += path
+	self.path += _path
 	set_process(true)

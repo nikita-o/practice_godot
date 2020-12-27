@@ -6,7 +6,6 @@ func _on_Button_pressed():
 	pass
 
 func _on_Start_pressed():
-	print("New Game!")
 	Client.start_game()
 #	get_tree().change_scene("res://Game.tscn")
 
