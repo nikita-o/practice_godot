@@ -485,3 +485,18 @@ scale = Vector2( 0.16297, 0.129395 )
 frames = SubResource( 9 )
 animation = "walk"
 frame = 9
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = -15.6632
+margin_top = -49.1684
+margin_right = 17.3368
+margin_bottom = -35.1684
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "10"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

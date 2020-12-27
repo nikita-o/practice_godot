@@ -30,11 +30,11 @@ func _ready():
 	Client.connect("SelectUnit", self, "_Select_Mob")
 	Client.connect("SpawnUnit", self, "_spawn_unit")
 	Client.connect("UpgradeTown", self, "_upgrade_town")
-	Client.connect("NextTurn", self, "_next_turn")
 	Client.connect("MoveUnit", self, "_move")
 	Client.connect("Attack", self, "_attack")
 	Client.connect("CaptureMine", self, "_capture_mine")
 	Client.connect("UpdateResources", self, "update_resources")
+	Client.connect("AttackTown", self, "attack_town")
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -92,6 +92,7 @@ func _spawn_unit(pos: Vector2, id, attack, defense, damage, health, actionPoints
 	u.actionPoints = actionPoints
 	u.rangeAttack = rangeAttack
 	u.shootingDamage = shootingDamage
+	u.get_node("Label").text = String(u.health)
 	u._initiz(id)
 	get_node("Map").add_child(u)
 	print("Spawn unit ", id)
@@ -107,6 +108,9 @@ func _attack(d2, pos):
 	if (d2 == 0):
 		emit_signal("click_cell", pos)
 		get_node("Map").remove_child(select_mob)
+
+func attack_town(health_town):
+	print("Town hp = ", health_town)
 
 func _capture_mine(pos):
 	print("Mine: ", pos)

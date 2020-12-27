@@ -30,6 +30,7 @@ enum response {
 	CaptureMine = 26, 
 	nextTurn    = 27,
 	Resources	= 28,
+	AttackTown	= 29,
 	}
 
 enum request {
@@ -47,21 +48,22 @@ enum Buttons {
 	right_click = 5
 	}
 
-signal SelectUnit(id, pos) # id player!
-signal MoveUnit(id, path)
-signal Attack(atack_id, atack_position, defens_id, defens_position)
-signal SpawnUnit(id, position, type_unit) # id player!
-signal UpgradeTown(id, level, health) # id player! (coord?)
-signal Market(pos) # id player!
-signal CaptureMine(id, position) # id player!
-signal UpdateResources(id, Gold, Wood, Rock, Crystall)
+signal SelectUnit
+signal MoveUnit
+signal Attack
+signal SpawnUnit
+signal UpgradeTown
+signal Market
+signal CaptureMine
+signal UpdateResources
+signal AttackTown
 
 func _ready():
 	print(123)
 	pass
 
-func _process(delta):
-	pass
+#func _process(delta):
+#	pass
 
 func connect_to_server():
 	var m: String
@@ -111,6 +113,7 @@ func _listener(d):
 		match pac:
 			response.accept:
 				var huynya = connection.get_32()
+				print(huynya)
 			response.connect:
 				var Name = connection.get_string()
 				var Message = connection.get_string()
@@ -119,6 +122,7 @@ func _listener(d):
 			response.Ping:
 				var Tick = connection.get_32()
 				var LastPing = connection.get_32()
+				ping(Tick, LastPing)
 				print("ПИНГУЮТ СУКИ")
 			response.InitGame:
 				var id = connection.get_32()
@@ -129,6 +133,7 @@ func _listener(d):
 				var id = connection.get_32()
 				var place = connection.get_32()
 				print("END GAME!!! ", id, " ", place)
+				end_game()
 			response.message:
 				print("message")
 			response.SelectUnit:
@@ -154,6 +159,15 @@ func _listener(d):
 				var defens_health = connection.get_32()
 				print("Attack", defens_health, defens_position)
 				self.call_deferred("emit_signal", "Attack",defens_health, defens_position)
+			response.AttackTown:
+				var unit_id = connection.get_32()
+				var unit_position = Vector2(connection.get_32(), connection.get_32())
+				var unit_health = connection.get_32()
+				var town_id = connection.get_32()
+				var town_position = Vector2(connection.get_32(), connection.get_32())
+				var town_health = connection.get_32()
+				print("AttackTown")
+				self.call_deferred("emit_signal", "AttackTown", town_health)
 			response.SpawnUnit:
 				var id = connection.get_32()
 				var position = Vector2(connection.get_32(), connection.get_32())
@@ -225,6 +239,14 @@ func start_game():
 	data.put_32(3)
 	send_packet(request.start_game, data)
 
+func end_game():
+	var data = StreamPeerBuffer.new()
+	data.put_32(0)
+	data.put_32(5)
+	send_packet(request.start_game, data)
+	get_tree().change_scene("res://Main_menu.tscn")
+	pass
+
 func _action(button: int, pos: Vector2, param: int):
 	if !turn: 
 		print("not our turn!")
@@ -235,3 +257,9 @@ func _action(button: int, pos: Vector2, param: int):
 	data.put_32(pos.y)
 	data.put_32(param)
 	send_packet(request.action, data)
+
+func ping(Tick, LastPing):
+	var data = StreamPeerBuffer.new()
+	data.put_32(Tick)
+	data.put_32(LastPing)
+	send_packet(5, data)
