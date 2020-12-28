@@ -34,7 +34,7 @@ func _ready():
 	_error = Client.connect("CaptureMine", self, "_capture_mine")
 	_error = Client.connect("UpdateResources", self, "update_resources")
 	_error = Client.connect("AttackTown", self, "attack_town")
-#	get_node("/root/Game/pause").visible = false
+	_error = Client.connect("Error_print", self, "print_error")
 
 func c_pause():
 	$pause/Control.visible = true
@@ -95,7 +95,7 @@ func _Select_Mob(pos, action_points):
 	$interface/Control/Panel/Panel/rangeAttack.text = String(my_unit.rangeAttack)
 	$interface/Control/Panel/Panel/shootingDamage.text = String(my_unit.shootingDamage)
 
-func _spawn_unit(pos: Vector2, id, attack, defense, damage, health, actionPoints, rangeAttack, shootingDamage):
+func _spawn_unit(enemy, pos: Vector2, id, attack, defense, damage, health, actionPoints, rangeAttack, shootingDamage):
 	var u = unit.instance()
 	u.position = Vector2(pos.x * 32 + 16, pos.y * 32 + 16)
 	u.attack = attack
@@ -106,6 +106,8 @@ func _spawn_unit(pos: Vector2, id, attack, defense, damage, health, actionPoints
 	u.rangeAttack = rangeAttack
 	u.shootingDamage = shootingDamage
 	u.get_node("Label").text = String(u.health)
+	if enemy: u.get_node("Label").modulate = Color(0,0,255)
+	else: u.get_node("Label").modulate = Color(255,0,0)
 	u._initiz(id)
 	get_node("Map").add_child(u)
 	print("\tSpawn unit ", id)
@@ -124,14 +126,16 @@ func _attack(defens_health, defens_position):
 	$interface/Control/Panel/Panel/actionPoints.text = String(my_unit.actionPoints)
 	select_mob.health = defens_health
 	select_mob.get_node("Label").text = String(select_mob.health)
-	if (defens_health == 0):
+	if (defens_health <= 0):
 		get_node("Map").remove_child(select_mob)
 
 func attack_town(health_town):
 	print("\tTown hp = ", health_town)
 
-func _capture_mine(pos):
+func _capture_mine(pos, enemy):
 	print("\tcapture mine: ", pos)
+	emit_signal("click_cell", pos)
+	select_mob.capture_mine(enemy)
 
 func _move(end_pos, path, actionPoints, start_pos):
 	print("\tMoveUnit")
@@ -147,3 +151,9 @@ func update_resources(Gold, Wood, Rock, Crystall):
 	$interface/Control/Panel2/Rock.text = String(Rock)
 	$interface/Control/Panel2/Crystal.text = String(Crystall)
 # --------------------------- #
+
+func print_error(_text):
+	$interface/Control/Error.text = _text
+	$interface/Control/Error.visible = true
+	yield(get_tree().create_timer(5.0), "timeout")
+	$interface/Control/Error.visible = false

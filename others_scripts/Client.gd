@@ -59,6 +59,7 @@ signal Market
 signal CaptureMine
 signal UpdateResources
 signal AttackTown
+signal Error_print
 
 func _ready():
 	pass
@@ -141,6 +142,7 @@ func next_turn(id):
 
 func error_packet(id, msg):
 	print("\tErrorPocket: ", id, " msg: ", msg)
+	emit_signal("Error_print", msg)
 
 func _listener(_prm):
 	while connection.get_status() == StreamPeerTCP.STATUS_CONNECTED:
@@ -209,7 +211,7 @@ func _listener(_prm):
 				var _MAXactionPoints = connection.get_32()
 				var _rangeAttack = connection.get_32()
 				var _shootingDamage = connection.get_32()
-				self.call_deferred("emit_signal", "SpawnUnit", _position, _type_unit, _attack, _defense, _damage, _health, _MAXactionPoints, _rangeAttack, _shootingDamage)
+				self.call_deferred("emit_signal", "SpawnUnit", _id != id_player, _position, _type_unit, _attack, _defense, _damage, _health, _MAXactionPoints, _rangeAttack, _shootingDamage)
 			response.UpgradeTown:
 				var _id = connection.get_32()
 				var level = connection.get_32()
@@ -221,7 +223,7 @@ func _listener(_prm):
 				var _id = connection.get_32()
 				var _position = Vector2(connection.get_32(), connection.get_32())
 				var _type_cave = connection.get_32()
-				self.call_deferred("emit_signal","CaptureMine", _position)
+				self.call_deferred("emit_signal","CaptureMine", _position, _id != id_player)
 			response.Resources:
 				var _id = connection.get_32()
 				var gold = connection.get_32()
@@ -229,7 +231,6 @@ func _listener(_prm):
 				var rock = connection.get_32()
 				var crystall = connection.get_32()
 				self.call_deferred("update_resources", gold, wood, rock, crystall)
-#				self.call_deferred("emit_signal","UpdateResources", gold, wood, rock, crystall)
 			response.nextTurn:
 				var _id = connection.get_32()
 				self.call_deferred("next_turn", _id)
@@ -264,6 +265,7 @@ func start_game():
 func _action(button: int, pos: Vector2, param: int):
 	if !turn: 
 		print("\nNOT our turn!\n")
+		emit_signal("Error_print", "NOT our turn!")
 		return
 	var data = StreamPeerBuffer.new()
 	data.put_32(button)
