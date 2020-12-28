@@ -79,7 +79,7 @@ margin_left = 242.0
 margin_top = 15.0
 margin_right = 282.0
 margin_bottom = 29.0
-text = "0"
+text = "150"
 
 [node name="Wood" type="Label" parent="Control/Panel2"]
 margin_left = 378.0
@@ -403,3 +403,12 @@ text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Error" type="Label" parent="Control"]
+visible = false
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 15.7768
+margin_top = 687.011
+margin_right = 55.7768
+margin_bottom = 701.011
+text = "Error"

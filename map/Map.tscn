@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://resources/world/Pipoya RPG Tileset 32x32/[A]_type3/[A]Dirt1-Dirt2_pipo.png" type="Texture" id=1]
 [ext_resource path="res://resources/world/Pipoya RPG Tileset 32x32/SampleMap/[A]Flower_pipo.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://resources/world/Pipoya RPG Tileset 32x32/[A]_type3/not_animation/[A]Water5_pipo.png" type="Texture" id=4]
 [ext_resource path="res://resources/world/Pipoya RPG Tileset 32x32/[A]_type3/not_animation/[A]Water2_pipo.png" type="Texture" id=5]
 [ext_resource path="res://resources/world/Pipoya RPG Tileset 32x32/[Base]BaseChip_pipo.png" type="Texture" id=6]
+[ext_resource path="res://mob/Mob.tscn" type="PackedScene" id=7]
 [ext_resource path="res://resources/world/Pipoya RPG Tileset 32x32/SampleMap/[A]Grass_pipo.png" type="Texture" id=8]
 [ext_resource path="res://resources/world/Pipoya RPG Tileset 32x32/SampleMap/[A]Dirt_pipo.png" type="Texture" id=9]
 [ext_resource path="res://resources/world/Pipoya RPG Tileset 32x32/SampleMap/[Base]BaseChip_pipo.png" type="Texture" id=10]
@@ -2109,3 +2110,45 @@ tile_set = SubResource( 10 )
 cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 65599, 3, 0, 917555, 2, 0, 1114169, 2, 0, 1376322, 0, 0, 1376324, 0, 0, 1507326, 0, 0, 1441859, 0, 0, 1441861, 0, 0, 1572862, 0, 0, 1638398, 0, 0, 1572876, 3, 0, 1572932, 1, 0, 1572934, 1, 0, 1572935, 0, 0, 1638471, 0, 0, 1769471, 1, 0, 1703936, 0, 0, 1703938, 0, 0, 1769473, 0, 0, 1769476, 1, 0, 1769543, 1, 0, 1835011, 1, 0, 1835012, 1, 0, 1835079, 1, 0, 1835080, 1, 0 )
+
+[node name="Mob" parent="." instance=ExtResource( 7 )]
+position = Vector2( 720, 112 )
+
+[node name="Mob2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1392, 80 )
+
+[node name="Mob3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2160, 208 )
+
+[node name="Mob4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2160, 880 )
+
+[node name="Mob5" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1552, 1520 )
+
+[node name="Mob6" parent="." instance=ExtResource( 7 )]
+position = Vector2( 880, 1552 )
+
+[node name="Mob7" parent="." instance=ExtResource( 7 )]
+position = Vector2( 112, 1424 )
+
+[node name="Mob8" parent="." instance=ExtResource( 7 )]
+position = Vector2( 112, 752 )
+
+[node name="Mob9" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1072, 784 )
+
+[node name="Mob10" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1040, 912 )
+
+[node name="Mob11" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1200, 848 )
+
+[node name="Mob12" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1232, 720 )
+
+[node name="Mob13" parent="." instance=ExtResource( 7 )]
+position = Vector2( 112, 112 )
+
+[node name="Mob14" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2160.17, 1520 )

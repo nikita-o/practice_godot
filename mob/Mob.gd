@@ -37,6 +37,8 @@ func _initiz(id):
 			Animate = $Shooter3
 		7: 
 			Animate = $Top_unit
+	$Mine.visible = false
+	$Label.visible = true
 	Animate.visible = true
 	Animate.play("default")
 
@@ -94,3 +96,7 @@ func move(pos, _path):
 	position_cell = pos
 	self.path += _path
 	set_process(true)
+
+func capture_mine(enemy):
+	if enemy: $Mine.color = Color(255,0,0)
+	else: $Mine.color = Color(0,255,0)
