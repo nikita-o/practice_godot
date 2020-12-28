@@ -289,9 +289,11 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
+
 "frames": [ ExtResource( 112 ), ExtResource( 126 ), ExtResource( 113 ), ExtResource( 118 ), ExtResource( 129 ), ExtResource( 124 ), ExtResource( 120 ), ExtResource( 130 ), ExtResource( 121 ), ExtResource( 122 ) ],
 "loop": true,
 "name": "hurt",
+
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 110 ), ExtResource( 115 ), ExtResource( 111 ), ExtResource( 119 ), ExtResource( 128 ), ExtResource( 105 ), ExtResource( 123 ), ExtResource( 116 ), ExtResource( 106 ), ExtResource( 117 ) ],
@@ -299,6 +301,7 @@ animations = [ {
 "name": "die",
 "speed": 5.0
 }, {
+
 "frames": [ ExtResource( 89 ), ExtResource( 90 ), ExtResource( 104 ), ExtResource( 92 ), ExtResource( 103 ), ExtResource( 97 ), ExtResource( 98 ), ExtResource( 91 ), ExtResource( 93 ), ExtResource( 94 ) ],
 "loop": true,
 "name": "walk",
@@ -307,6 +310,7 @@ animations = [ {
 "frames": [ ExtResource( 299 ), ExtResource( 300 ), ExtResource( 109 ), ExtResource( 108 ), ExtResource( 131 ), ExtResource( 125 ), ExtResource( 107 ), ExtResource( 114 ), ExtResource( 132 ), ExtResource( 127 ) ],
 "loop": true,
 "name": "attack",
+
 "speed": 5.0
 } ]
 
@@ -317,9 +321,12 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
+
 "frames": [ ExtResource( 87 ), ExtResource( 77 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 75 ), ExtResource( 76 ), ExtResource( 81 ), ExtResource( 82 ), ExtResource( 80 ), ExtResource( 73 ) ],
 "loop": true,
 "name": "hurt",
+
+
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 95 ), ExtResource( 96 ), ExtResource( 99 ), ExtResource( 100 ), ExtResource( 101 ), ExtResource( 102 ), ExtResource( 88 ), ExtResource( 84 ), ExtResource( 86 ), ExtResource( 85 ) ],
@@ -327,6 +334,7 @@ animations = [ {
 "name": "die",
 "speed": 5.0
 }, {
+
 "frames": [ ExtResource( 176 ), ExtResource( 203 ), ExtResource( 194 ), ExtResource( 180 ), ExtResource( 231 ), ExtResource( 217 ), ExtResource( 223 ), ExtResource( 224 ), ExtResource( 236 ), ExtResource( 225 ) ],
 "loop": true,
 "name": "walk",
@@ -335,6 +343,7 @@ animations = [ {
 "frames": [ ExtResource( 74 ), ExtResource( 83 ), ExtResource( 202 ), ExtResource( 200 ), ExtResource( 181 ), ExtResource( 199 ), ExtResource( 207 ), ExtResource( 215 ), ExtResource( 216 ), ExtResource( 201 ) ],
 "loop": true,
 "name": "attack",
+
 "speed": 5.0
 } ]
 
@@ -345,9 +354,11 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
+
 "frames": [ ExtResource( 198 ), ExtResource( 178 ), ExtResource( 227 ), ExtResource( 182 ), ExtResource( 185 ), ExtResource( 228 ), ExtResource( 214 ), ExtResource( 186 ), ExtResource( 234 ), ExtResource( 213 ) ],
 "loop": true,
 "name": "hurt",
+
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 184 ), ExtResource( 183 ), ExtResource( 197 ), ExtResource( 221 ), ExtResource( 179 ), ExtResource( 190 ), ExtResource( 177 ), ExtResource( 210 ), ExtResource( 212 ), ExtResource( 226 ) ],
@@ -355,6 +366,7 @@ animations = [ {
 "name": "die",
 "speed": 5.0
 }, {
+
 "frames": [ ExtResource( 229 ), ExtResource( 230 ), ExtResource( 232 ), ExtResource( 235 ), ExtResource( 187 ), ExtResource( 191 ), ExtResource( 192 ), ExtResource( 244 ), ExtResource( 243 ), ExtResource( 238 ) ],
 "loop": true,
 "name": "walk",
@@ -363,6 +375,7 @@ animations = [ {
 "frames": [ ExtResource( 219 ), ExtResource( 195 ), ExtResource( 233 ), ExtResource( 218 ), ExtResource( 204 ), ExtResource( 174 ), ExtResource( 208 ), ExtResource( 196 ), ExtResource( 209 ), ExtResource( 220 ) ],
 "loop": true,
 "name": "attack",
+
 "speed": 5.0
 } ]
 
@@ -381,9 +394,11 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
+
 "frames": [ ExtResource( 277 ), ExtResource( 266 ), ExtResource( 258 ), ExtResource( 291 ), ExtResource( 259 ), ExtResource( 260 ), ExtResource( 261 ), ExtResource( 271 ), ExtResource( 283 ), ExtResource( 262 ) ],
 "loop": true,
 "name": "hurt",
+
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 263 ), ExtResource( 279 ), ExtResource( 280 ), ExtResource( 268 ), ExtResource( 295 ), ExtResource( 286 ), ExtResource( 284 ), ExtResource( 281 ), ExtResource( 282 ), ExtResource( 251 ) ],
@@ -391,6 +406,7 @@ animations = [ {
 "name": "die",
 "speed": 5.0
 }, {
+
 "frames": [ ExtResource( 274 ), ExtResource( 275 ), ExtResource( 292 ), ExtResource( 276 ), ExtResource( 289 ), ExtResource( 290 ), ExtResource( 296 ), ExtResource( 297 ), ExtResource( 301 ), ExtResource( 298 ) ],
 "loop": true,
 "name": "walk",
@@ -399,6 +415,7 @@ animations = [ {
 "frames": [ ExtResource( 250 ), ExtResource( 285 ), ExtResource( 264 ), ExtResource( 269 ), ExtResource( 270 ), ExtResource( 265 ), ExtResource( 272 ), ExtResource( 287 ), ExtResource( 273 ), ExtResource( 288 ) ],
 "loop": true,
 "name": "attack",
+
 "speed": 5.0
 } ]
 
@@ -425,9 +442,11 @@ animations = [ {
 "name": "default",
 "speed": 5.5
 }, {
+
 "frames": [ ExtResource( 38 ), ExtResource( 28 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 23 ) ],
 "loop": true,
 "name": "hurt",
+
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 24 ), ExtResource( 33 ), ExtResource( 62 ), ExtResource( 54 ), ExtResource( 50 ), ExtResource( 49 ), ExtResource( 55 ), ExtResource( 61 ), ExtResource( 51 ), ExtResource( 52 ) ],
@@ -435,6 +454,7 @@ animations = [ {
 "name": "die",
 "speed": 5.0
 }, {
+
 "frames": [ ExtResource( 65 ), ExtResource( 60 ), ExtResource( 71 ), ExtResource( 53 ), ExtResource( 70 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 58 ), ExtResource( 48 ), ExtResource( 66 ) ],
 "loop": true,
 "name": "walk",
@@ -443,6 +463,7 @@ animations = [ {
 "frames": [ ExtResource( 56 ), ExtResource( 67 ), ExtResource( 69 ), ExtResource( 47 ), ExtResource( 72 ), ExtResource( 57 ), ExtResource( 68 ), ExtResource( 59 ), ExtResource( 63 ), ExtResource( 64 ) ],
 "loop": true,
 "name": "attack",
+
 "speed": 5.0
 } ]
 
@@ -451,9 +472,11 @@ scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )
 
 [node name="Scout" type="AnimatedSprite" parent="."]
