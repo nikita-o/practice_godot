@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://resources/units/model/roga/_SCML/1/1_head.png" type="Texture" id=1]
 [ext_resource path="res://resources/units/model/roga/_SCML/3/3_head.png" type="Texture" id=2]
 [ext_resource path="res://resources/units/model/top/_SCML/1_KNIGHT/1_head_.png" type="Texture" id=3]
 [ext_resource path="res://resources/units/model/top/_SCML/2_KNIGHT/2_head_.png" type="Texture" id=4]
-[ext_resource path="res://resources/units/model/top/_SCML/3_KNIGHT/3_sword_.png" type="Texture" id=5]
+[ext_resource path="res://resources/units/model/pirate/SCML/2/1_head.png" type="Texture" id=5]
 [ext_resource path="res://resources/units/model/top/_SCML/3_KNIGHT/3_head_.png" type="Texture" id=6]
 [ext_resource path="res://resources/units/model/roga/_SCML/2/2_head.png" type="Texture" id=7]
+[ext_resource path="res://resources/units/model/elf/_SCML/3/3_head.png" type="Texture" id=8]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -115,10 +116,11 @@ __meta__ = {
 [node name="Button" type="Button" parent="Control/Panel" groups=[
 "spawn_button",
 ]]
+anchor_top = 5.29819e-09
 margin_left = 25.0
 margin_top = 39.0
-margin_right = 613.0
-margin_bottom = 560.0
+margin_right = 668.0
+margin_bottom = 561.0
 rect_scale = Vector2( 0.085, 0.1 )
 icon = ExtResource( 7 )
 __meta__ = {
@@ -129,10 +131,10 @@ __meta__ = {
 "spawn_button",
 ]]
 anchor_left = -4.07989e-08
-margin_left = 99.0
-margin_top = 39.0
-margin_right = 632.0
-margin_bottom = 542.0
+margin_left = 25.0
+margin_top = 96.27
+margin_right = 600.0
+margin_bottom = 618.27
 rect_scale = Vector2( 0.095, 0.1 )
 icon = ExtResource( 1 )
 __meta__ = {
@@ -142,10 +144,10 @@ __meta__ = {
 [node name="Button3" type="Button" parent="Control/Panel" groups=[
 "spawn_button",
 ]]
-margin_left = 25.0
-margin_top = 100.0
-margin_right = 600.0
-margin_bottom = 622.0
+margin_left = 99.0
+margin_top = 39.0
+margin_right = 674.0
+margin_bottom = 561.0
 rect_scale = Vector2( 0.087, 0.1 )
 icon = ExtResource( 2 )
 __meta__ = {
@@ -155,10 +157,10 @@ __meta__ = {
 [node name="Button4" type="Button" parent="Control/Panel" groups=[
 "spawn_button",
 ]]
-margin_left = 99.0
-margin_top = 99.0
-margin_right = 149.0
-margin_bottom = 149.0
+margin_left = 25.0
+margin_top = 156.27
+margin_right = 573.0
+margin_bottom = 750.27
 rect_scale = Vector2( 0.1, 0.085 )
 icon = ExtResource( 4 )
 __meta__ = {
@@ -168,23 +170,28 @@ __meta__ = {
 [node name="Button5" type="Button" parent="Control/Panel" groups=[
 "spawn_button",
 ]]
-margin_left = 25.0
-margin_top = 159.0
-margin_right = 573.0
-margin_bottom = 753.0
+margin_left = 99.0
+margin_top = 96.0
+margin_right = 599.0
+margin_bottom = 716.0
 rect_scale = Vector2( 0.1, 0.085 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="3_head" type="Sprite" parent="Control/Panel/Button5"]
+position = Vector2( 250.125, 282.353 )
+scale = Vector2( 0.8854, 1.01151 )
+texture = ExtResource( 8 )
+
 [node name="Button6" type="Button" parent="Control/Panel" groups=[
 "spawn_button",
 ]]
-margin_left = 99.0
-margin_top = 159.0
-margin_right = 149.0
-margin_bottom = 209.0
-rect_scale = Vector2( 0.087, 0.1 )
+margin_left = 25.0
+margin_top = 216.0
+margin_right = 771.0
+margin_bottom = 776.0
+rect_scale = Vector2( 0.075, 0.09 )
 icon = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -193,24 +200,36 @@ __meta__ = {
 [node name="Button7" type="Button" parent="Control/Panel" groups=[
 "spawn_button",
 ]]
-margin_left = 25.0
-margin_top = 220.0
-margin_right = 771.0
-margin_bottom = 780.0
+margin_left = 99.0
+margin_top = 156.27
+margin_right = 766.0
+margin_bottom = 716.27
 rect_scale = Vector2( 0.075, 0.09 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1_head" type="Sprite" parent="Control/Panel/Button7"]
+position = Vector2( 318.583, 271.028 )
+scale = Vector2( 0.925409, 0.844976 )
+texture = ExtResource( 5 )
 
 [node name="Button8" type="Button" parent="Control/Panel" groups=[
 "spawn_button",
 ]]
 margin_left = 99.0
-margin_top = 220.0
-margin_right = 724.0
-margin_bottom = 845.0
-rect_scale = Vector2( 0.08, 0.08 )
-icon = ExtResource( 3 )
+margin_top = 216.0
+margin_right = 661.0
+margin_bottom = 846.0
+rect_scale = Vector2( 0.089, 0.08 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="1_head_" type="Sprite" parent="Control/Panel/Button8"]
+position = Vector2( 251.876, 337.5 )
+scale = Vector2( 0.939501, 1 )
+texture = ExtResource( 3 )
 
 [node name="Castle1" type="Button" parent="Control/Panel" groups=[
 "upgrade_town_button",
@@ -262,7 +281,6 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Control/Panel/Panel"]
 position = Vector2( 91, 40 )
 scale = Vector2( 0.130706, 0.118638 )
-texture = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="Control/Panel/Panel"]
 margin_left = 19.0
