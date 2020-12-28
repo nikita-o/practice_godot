@@ -11,7 +11,9 @@ enum button {
 	SpawnUnit = 3,
 	UpgradeTown = 4,
 	Market = 5,
-	NextTurn = 6
+	NextTurn = 6,
+	Cheats = 7,
+	Give_up = 8,
 }
 
 func _ready():
@@ -21,6 +23,7 @@ func _ready():
 		id += 1
 	get_tree().get_nodes_in_group("upgrade_town_button")[0].connect("pressed", self, "c_upgrade_town")
 	get_tree().get_nodes_in_group("next_turn")[0].connect("pressed", self, "c_next_turn")
+	$interface/Control/Panel2/Menu.connect("pressed", self, "c_pause")
 	var _error
 	_error = Client.connect("Market", self, "_market")
 	_error = Client.connect("SelectUnit", self, "_Select_Mob")
@@ -31,11 +34,14 @@ func _ready():
 	_error = Client.connect("CaptureMine", self, "_capture_mine")
 	_error = Client.connect("UpdateResources", self, "update_resources")
 	_error = Client.connect("AttackTown", self, "attack_town")
+#	get_node("/root/Game/pause").visible = false
+
+func c_pause():
+	$pause/Control.visible = true
 
 func _input(event):
 	if event is InputEventMouseButton:
-		if event.pressed && (event.button_index == BUTTON_LEFT || event.button_index == BUTTON_RIGHT):
-			# crutch... so as not to click on the interface
+		if event.pressed && (event.button_index == BUTTON_LEFT || event.button_index == BUTTON_RIGHT) && !$pause/Control.visible:
 			if event.position.x < get_node("/root/Game/interface/Control/Panel").get_position().x:
 				if event.position.y > get_node("/root/Game/interface/Control/Panel2").get_size().y:
 					var pos = get_node("Map").get_global_mouse_position() / 32
@@ -65,12 +71,22 @@ func c_next_turn():
 func c_market():
 	Client._action(button.Market, Vector2.ZERO, 0)
 
+func c_cheats():
+	Client._action(button.Cheats, Vector2.ZERO, 0)
+
+func c_give_up():
+	Client._action(button.Give_up, Vector2.ZERO, 0)
+
 # --------------------------- #
 
-func _Select_Mob(pos):
+func _Select_Mob(pos, action_points):
 	print("\tSelectUnit: ", pos)
 	emit_signal("click_cell", pos)
+	if my_unit != null:
+		my_unit.get_node("Sprite").visible = false
 	my_unit = select_mob
+	my_unit.get_node("Sprite").visible = true
+	my_unit.actionPoints = action_points
 	$interface/Control/Panel/Panel/attack.text = String(my_unit.attack)
 	$interface/Control/Panel/Panel/defense.text = String(my_unit.defense)
 	$interface/Control/Panel/Panel/damage.text = String(my_unit.damage)
@@ -104,6 +120,8 @@ func _attack(defens_health, defens_position):
 	print("\tAttack: ", defens_position)
 	print("\thp enemy: ", defens_health)
 	emit_signal("click_cell", defens_position)
+	my_unit.actionPoints = 0
+	$interface/Control/Panel/Panel/actionPoints.text = String(my_unit.actionPoints)
 	select_mob.health = defens_health
 	select_mob.get_node("Label").text = String(select_mob.health)
 	if (defens_health == 0):
@@ -115,11 +133,12 @@ func attack_town(health_town):
 func _capture_mine(pos):
 	print("\tcapture mine: ", pos)
 
-func _move(pos, path, actionPoints):
+func _move(end_pos, path, actionPoints, start_pos):
 	print("\tMoveUnit")
-	my_unit.actionPoints = actionPoints
-	$interface/Control/Panel/Panel/actionPoints.text = String(my_unit.actionPoints)
-	my_unit.move(pos, path)
+	emit_signal("click_cell", start_pos)
+	select_mob.actionPoints = actionPoints
+	$interface/Control/Panel/Panel/actionPoints.text = String(select_mob.actionPoints)
+	select_mob.move(end_pos, path)
 
 func update_resources(Gold, Wood, Rock, Crystall):
 	print("\tupdate resources")

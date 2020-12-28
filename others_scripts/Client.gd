@@ -45,7 +45,9 @@ enum Buttons {
 	market = 2, 
 	next_turn = 3, 
 	left_click = 4, 
-	right_click = 5
+	right_click = 5,
+	cheats = 6,
+	give_up = 7,
 	}
 
 signal SelectUnit
@@ -123,10 +125,13 @@ func update_resources(gold, wood, rock, crystall):
 
 func end_game(id, place):
 	print("\tEND GAME!!! ", id, " ", place)
+	if id_player == id: print("\tYOU WIN!")
+	else: print("\tYOU LOSE!")
 	var data = StreamPeerBuffer.new()
 	data.put_32(0)
 	data.put_32(5)
 	send_packet(request.start_game, data)
+#	END GAME
 	var _err = get_tree().change_scene("res://Main_menu.tscn")
 
 func next_turn(id):
@@ -165,15 +170,18 @@ func _listener(_prm):
 			response.SelectUnit:
 				var _id = connection.get_32()
 				var position = Vector2(connection.get_32(), connection.get_32())
-				self.call_deferred("emit_signal", "SelectUnit", position)
+				var action_points = connection.get_32()
+				if (_id == id_player):
+					self.call_deferred("emit_signal", "SelectUnit", position, action_points)
 			response.MoveUnit:
 				var _id = connection.get_32()
-				var position = Vector2(connection.get_32(), connection.get_32())
+				var e_position = Vector2(connection.get_32(), connection.get_32())
+				var s_position = Vector2(connection.get_32(), connection.get_32())
 				var actionPoints = connection.get_32()
 				var path = []
 				for j in connection.get_32():
 					path.push_back(connection.get_32())
-				self.call_deferred("emit_signal", "MoveUnit", position, path, actionPoints)
+				self.call_deferred("emit_signal", "MoveUnit", s_position, path, actionPoints, e_position)
 			response.Attack:
 				var _atack_id = connection.get_32()
 				var _atack_position = Vector2(connection.get_32(), connection.get_32())
