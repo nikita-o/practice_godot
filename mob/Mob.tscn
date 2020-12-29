@@ -1,4 +1,4 @@
-[gd_scene load_steps=288 format=2]
+[gd_scene load_steps=396 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://mob/Mob.gd" type="Script" id=2]
@@ -159,6 +159,19 @@
 [ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__IDLE_001.png" type="Texture" id=157]
 [ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__IDLE_002.png" type="Texture" id=158]
 [ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__IDLE_003.png" type="Texture" id=159]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__ATTACK_000.png" type="Texture" id=160]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__ATTACK_001.png" type="Texture" id=161]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__HURT_008.png" type="Texture" id=162]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__WALK_000.png" type="Texture" id=163]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__HURT_004.png" type="Texture" id=164]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__WALK_004.png" type="Texture" id=165]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__WALK_008.png" type="Texture" id=166]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_ATTACK_000.png" type="Texture" id=167]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_ATTACK_001.png" type="Texture" id=168]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_ATTACK_003.png" type="Texture" id=169]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__HURT_002.png" type="Texture" id=170]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__ATTACK_008.png" type="Texture" id=171]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__HURT_007.png" type="Texture" id=172]
 [ext_resource path="res://resources/units/model/roga/_PNG/1/Warrior_01__IDLE_007.png" type="Texture" id=173]
 [ext_resource path="res://resources/units/model/top/_PNG/3_KNIGHT/Knight_03__ATTACK_005.png" type="Texture" id=174]
 [ext_resource path="res://resources/units/model/roga/_PNG/1/Warrior_01__IDLE_004.png" type="Texture" id=175]
@@ -223,9 +236,19 @@
 [ext_resource path="res://resources/units/model/top/_PNG/3_KNIGHT/Knight_03__HURT_008.png" type="Texture" id=234]
 [ext_resource path="res://resources/units/model/top/_PNG/3_KNIGHT/Knight_03__WALK_003.png" type="Texture" id=235]
 [ext_resource path="res://resources/units/model/roga/_PNG/1/Warrior_01__WALK_008.png" type="Texture" id=236]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__DIE_005.png" type="Texture" id=237]
 [ext_resource path="res://resources/units/model/top/_PNG/3_KNIGHT/Knight_03__WALK_009.png" type="Texture" id=238]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__HURT_003.png" type="Texture" id=239]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__WALK_006.png" type="Texture" id=240]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__WALK_001.png" type="Texture" id=241]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__ATTACK_003.png" type="Texture" id=242]
 [ext_resource path="res://resources/units/model/top/_PNG/3_KNIGHT/Knight_03__WALK_008.png" type="Texture" id=243]
 [ext_resource path="res://resources/units/model/top/_PNG/3_KNIGHT/Knight_03__WALK_007.png" type="Texture" id=244]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__ATTACK_005.png" type="Texture" id=245]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__ATTACK_006.png" type="Texture" id=246]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__DIE_000.png" type="Texture" id=247]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__DIE_001.png" type="Texture" id=248]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__DIE_003.png" type="Texture" id=249]
 [ext_resource path="res://resources/units/model/roga/_PNG/3/Warrior_03__ATTACK_000.png" type="Texture" id=250]
 [ext_resource path="res://resources/units/model/roga/_PNG/3/Warrior_03__DIE_009.png" type="Texture" id=251]
 [ext_resource path="res://resources/units/model/roga/_PNG/3/Warrior_03__IDLE_000.png" type="Texture" id=252]
@@ -278,6 +301,91 @@
 [ext_resource path="res://resources/units/model/roga/_PNG/2/Warrior_02__ATTACK_000.png" type="Texture" id=299]
 [ext_resource path="res://resources/units/model/roga/_PNG/2/Warrior_02__ATTACK_001.png" type="Texture" id=300]
 [ext_resource path="res://resources/units/model/roga/_PNG/3/Warrior_03__WALK_008.png" type="Texture" id=301]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__DIE_004.png" type="Texture" id=302]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__ATTACK_002.png" type="Texture" id=303]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__HURT_001.png" type="Texture" id=304]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__HURT_005.png" type="Texture" id=305]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__ATTACK_007.png" type="Texture" id=306]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__WALK_002.png" type="Texture" id=307]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__DIE_006.png" type="Texture" id=308]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__HURT_009.png" type="Texture" id=309]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__WALK_003.png" type="Texture" id=310]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__WALK_005.png" type="Texture" id=311]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__WALK_007.png" type="Texture" id=312]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__ATTACK_009.png" type="Texture" id=313]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__HURT_000.png" type="Texture" id=314]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__WALK_009.png" type="Texture" id=315]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__DIE_008.png" type="Texture" id=316]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_ATTACK_002.png" type="Texture" id=317]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__DIE_007.png" type="Texture" id=318]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__DIE_009.png" type="Texture" id=319]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__ATTACK_004.png" type="Texture" id=320]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__DIE_002.png" type="Texture" id=321]
+[ext_resource path="res://resources/units/model/top/_PNG/2_KNIGHT/Knight_02__HURT_006.png" type="Texture" id=322]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_DIE_001.png" type="Texture" id=323]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_DIE_004.png" type="Texture" id=324]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_HURT_001.png" type="Texture" id=325]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_ATTACK_004.png" type="Texture" id=326]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_DIE_002.png" type="Texture" id=327]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_DIE_003.png" type="Texture" id=328]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_DIE_005.png" type="Texture" id=329]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_HURT_002.png" type="Texture" id=330]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_DIE_006.png" type="Texture" id=331]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_DIE_000.png" type="Texture" id=332]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_HURT_000.png" type="Texture" id=333]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_ATTACK_005.png" type="Texture" id=334]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_ATTACK_006.png" type="Texture" id=335]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_HURT_005.png" type="Texture" id=336]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_HURT_006.png" type="Texture" id=337]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_WALK_000.png" type="Texture" id=338]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_WALK_005.png" type="Texture" id=339]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__ATTACK_000.png" type="Texture" id=340]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_WALK_006.png" type="Texture" id=341]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_HURT_004.png" type="Texture" id=342]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_WALK_002.png" type="Texture" id=343]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__ATTACK_001.png" type="Texture" id=344]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_WALK_001.png" type="Texture" id=345]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_WALK_003.png" type="Texture" id=346]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_WALK_004.png" type="Texture" id=347]
+[ext_resource path="res://resources/units/model/pirate/PNG/2/2_entity_000_HURT_003.png" type="Texture" id=348]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__WALK_003.png" type="Texture" id=349]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__WALK_007.png" type="Texture" id=350]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__WALK_008.png" type="Texture" id=351]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__HURT_001.png" type="Texture" id=352]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__HURT_000.png" type="Texture" id=353]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__DIE_000.png" type="Texture" id=354]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__HURT_003.png" type="Texture" id=355]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__ATTACK_006.png" type="Texture" id=356]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__DIE_004.png" type="Texture" id=357]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__HURT_002.png" type="Texture" id=358]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__HURT_009.png" type="Texture" id=359]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__ATTACK_005.png" type="Texture" id=360]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__WALK_000.png" type="Texture" id=361]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__DIE_009.png" type="Texture" id=362]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__DIE_003.png" type="Texture" id=363]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__ATTACK_004.png" type="Texture" id=364]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__ATTACK_007.png" type="Texture" id=365]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__WALK_001.png" type="Texture" id=366]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__HURT_004.png" type="Texture" id=367]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__WALK_005.png" type="Texture" id=368]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__HURT_007.png" type="Texture" id=369]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__DIE_006.png" type="Texture" id=370]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__HURT_008.png" type="Texture" id=371]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__WALK_006.png" type="Texture" id=372]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__ATTACK_008.png" type="Texture" id=373]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__ATTACK_009.png" type="Texture" id=374]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__ATTACK_002.png" type="Texture" id=375]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__DIE_007.png" type="Texture" id=376]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__ATTACK_003.png" type="Texture" id=377]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__WALK_009.png" type="Texture" id=378]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__DIE_005.png" type="Texture" id=379]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__DIE_008.png" type="Texture" id=380]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__WALK_004.png" type="Texture" id=381]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__WALK_002.png" type="Texture" id=382]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__DIE_002.png" type="Texture" id=383]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__HURT_005.png" type="Texture" id=384]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__DIE_001.png" type="Texture" id=385]
+[ext_resource path="res://resources/units/model/elf/_PNG/3/Elf_03__HURT_006.png" type="Texture" id=386]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -289,28 +397,24 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-
-"frames": [ ExtResource( 112 ), ExtResource( 126 ), ExtResource( 113 ), ExtResource( 118 ), ExtResource( 129 ), ExtResource( 124 ), ExtResource( 120 ), ExtResource( 130 ), ExtResource( 121 ), ExtResource( 122 ) ],
-"loop": true,
-"name": "hurt",
-
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 110 ), ExtResource( 115 ), ExtResource( 111 ), ExtResource( 119 ), ExtResource( 128 ), ExtResource( 105 ), ExtResource( 123 ), ExtResource( 116 ), ExtResource( 106 ), ExtResource( 117 ) ],
-"loop": true,
-"name": "die",
-"speed": 5.0
-}, {
-
 "frames": [ ExtResource( 89 ), ExtResource( 90 ), ExtResource( 104 ), ExtResource( 92 ), ExtResource( 103 ), ExtResource( 97 ), ExtResource( 98 ), ExtResource( 91 ), ExtResource( 93 ), ExtResource( 94 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 110 ), ExtResource( 115 ), ExtResource( 111 ), ExtResource( 119 ), ExtResource( 128 ), ExtResource( 105 ), ExtResource( 123 ), ExtResource( 116 ), ExtResource( 106 ), ExtResource( 117 ) ],
+"loop": false,
+"name": "die",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 112 ), ExtResource( 126 ), ExtResource( 113 ), ExtResource( 118 ), ExtResource( 129 ), ExtResource( 124 ), ExtResource( 120 ), ExtResource( 130 ), ExtResource( 121 ), ExtResource( 122 ) ],
+"loop": false,
+"name": "hurt",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 299 ), ExtResource( 300 ), ExtResource( 109 ), ExtResource( 108 ), ExtResource( 131 ), ExtResource( 125 ), ExtResource( 107 ), ExtResource( 114 ), ExtResource( 132 ), ExtResource( 127 ) ],
-"loop": true,
+"loop": false,
 "name": "attack",
-
 "speed": 5.0
 } ]
 
@@ -321,29 +425,24 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-
-"frames": [ ExtResource( 87 ), ExtResource( 77 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 75 ), ExtResource( 76 ), ExtResource( 81 ), ExtResource( 82 ), ExtResource( 80 ), ExtResource( 73 ) ],
-"loop": true,
-"name": "hurt",
-
-
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 95 ), ExtResource( 96 ), ExtResource( 99 ), ExtResource( 100 ), ExtResource( 101 ), ExtResource( 102 ), ExtResource( 88 ), ExtResource( 84 ), ExtResource( 86 ), ExtResource( 85 ) ],
-"loop": true,
-"name": "die",
-"speed": 5.0
-}, {
-
 "frames": [ ExtResource( 176 ), ExtResource( 203 ), ExtResource( 194 ), ExtResource( 180 ), ExtResource( 231 ), ExtResource( 217 ), ExtResource( 223 ), ExtResource( 224 ), ExtResource( 236 ), ExtResource( 225 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 95 ), ExtResource( 96 ), ExtResource( 99 ), ExtResource( 100 ), ExtResource( 101 ), ExtResource( 102 ), ExtResource( 88 ), ExtResource( 84 ), ExtResource( 86 ), ExtResource( 85 ) ],
+"loop": false,
+"name": "die",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 87 ), ExtResource( 77 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 75 ), ExtResource( 76 ), ExtResource( 81 ), ExtResource( 82 ), ExtResource( 80 ), ExtResource( 73 ) ],
+"loop": false,
+"name": "hurt",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 74 ), ExtResource( 83 ), ExtResource( 202 ), ExtResource( 200 ), ExtResource( 181 ), ExtResource( 199 ), ExtResource( 207 ), ExtResource( 215 ), ExtResource( 216 ), ExtResource( 201 ) ],
-"loop": true,
+"loop": false,
 "name": "attack",
-
 "speed": 5.0
 } ]
 
@@ -354,28 +453,24 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-
-"frames": [ ExtResource( 198 ), ExtResource( 178 ), ExtResource( 227 ), ExtResource( 182 ), ExtResource( 185 ), ExtResource( 228 ), ExtResource( 214 ), ExtResource( 186 ), ExtResource( 234 ), ExtResource( 213 ) ],
-"loop": true,
-"name": "hurt",
-
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 184 ), ExtResource( 183 ), ExtResource( 197 ), ExtResource( 221 ), ExtResource( 179 ), ExtResource( 190 ), ExtResource( 177 ), ExtResource( 210 ), ExtResource( 212 ), ExtResource( 226 ) ],
-"loop": true,
-"name": "die",
-"speed": 5.0
-}, {
-
 "frames": [ ExtResource( 229 ), ExtResource( 230 ), ExtResource( 232 ), ExtResource( 235 ), ExtResource( 187 ), ExtResource( 191 ), ExtResource( 192 ), ExtResource( 244 ), ExtResource( 243 ), ExtResource( 238 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 184 ), ExtResource( 183 ), ExtResource( 197 ), ExtResource( 221 ), ExtResource( 179 ), ExtResource( 190 ), ExtResource( 177 ), ExtResource( 210 ), ExtResource( 212 ), ExtResource( 226 ) ],
+"loop": false,
+"name": "die",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 198 ), ExtResource( 178 ), ExtResource( 227 ), ExtResource( 182 ), ExtResource( 185 ), ExtResource( 228 ), ExtResource( 214 ), ExtResource( 186 ), ExtResource( 234 ), ExtResource( 213 ) ],
+"loop": false,
+"name": "hurt",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 219 ), ExtResource( 195 ), ExtResource( 233 ), ExtResource( 218 ), ExtResource( 204 ), ExtResource( 174 ), ExtResource( 208 ), ExtResource( 196 ), ExtResource( 209 ), ExtResource( 220 ) ],
-"loop": true,
+"loop": false,
 "name": "attack",
-
 "speed": 5.0
 } ]
 
@@ -384,6 +479,26 @@ animations = [ {
 "frames": [ ExtResource( 156 ), ExtResource( 157 ), ExtResource( 158 ), ExtResource( 159 ), ExtResource( 137 ), ExtResource( 135 ), ExtResource( 138 ), ExtResource( 134 ), ExtResource( 136 ), ExtResource( 133 ) ],
 "loop": true,
 "name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 163 ), ExtResource( 241 ), ExtResource( 307 ), ExtResource( 310 ), ExtResource( 165 ), ExtResource( 311 ), ExtResource( 240 ), ExtResource( 312 ), ExtResource( 166 ), ExtResource( 315 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 247 ), ExtResource( 248 ), ExtResource( 321 ), ExtResource( 249 ), ExtResource( 302 ), ExtResource( 237 ), ExtResource( 308 ), ExtResource( 318 ), ExtResource( 316 ), ExtResource( 319 ) ],
+"loop": false,
+"name": "die",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 314 ), ExtResource( 304 ), ExtResource( 170 ), ExtResource( 239 ), ExtResource( 164 ), ExtResource( 305 ), ExtResource( 322 ), ExtResource( 172 ), ExtResource( 162 ), ExtResource( 309 ) ],
+"loop": false,
+"name": "hurt",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 160 ), ExtResource( 161 ), ExtResource( 303 ), ExtResource( 242 ), ExtResource( 320 ), ExtResource( 245 ), ExtResource( 246 ), ExtResource( 306 ), ExtResource( 171 ), ExtResource( 313 ) ],
+"loop": false,
+"name": "attack",
 "speed": 5.0
 } ]
 
@@ -394,28 +509,24 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-
-"frames": [ ExtResource( 277 ), ExtResource( 266 ), ExtResource( 258 ), ExtResource( 291 ), ExtResource( 259 ), ExtResource( 260 ), ExtResource( 261 ), ExtResource( 271 ), ExtResource( 283 ), ExtResource( 262 ) ],
-"loop": true,
-"name": "hurt",
-
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 263 ), ExtResource( 279 ), ExtResource( 280 ), ExtResource( 268 ), ExtResource( 295 ), ExtResource( 286 ), ExtResource( 284 ), ExtResource( 281 ), ExtResource( 282 ), ExtResource( 251 ) ],
-"loop": true,
-"name": "die",
-"speed": 5.0
-}, {
-
 "frames": [ ExtResource( 274 ), ExtResource( 275 ), ExtResource( 292 ), ExtResource( 276 ), ExtResource( 289 ), ExtResource( 290 ), ExtResource( 296 ), ExtResource( 297 ), ExtResource( 301 ), ExtResource( 298 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 263 ), ExtResource( 279 ), ExtResource( 280 ), ExtResource( 268 ), ExtResource( 295 ), ExtResource( 286 ), ExtResource( 284 ), ExtResource( 281 ), ExtResource( 282 ), ExtResource( 251 ) ],
+"loop": false,
+"name": "die",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 277 ), ExtResource( 266 ), ExtResource( 258 ), ExtResource( 291 ), ExtResource( 259 ), ExtResource( 260 ), ExtResource( 261 ), ExtResource( 271 ), ExtResource( 283 ), ExtResource( 262 ) ],
+"loop": false,
+"name": "hurt",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 250 ), ExtResource( 285 ), ExtResource( 264 ), ExtResource( 269 ), ExtResource( 270 ), ExtResource( 265 ), ExtResource( 272 ), ExtResource( 287 ), ExtResource( 273 ), ExtResource( 288 ) ],
-"loop": true,
+"loop": false,
 "name": "attack",
-
 "speed": 5.0
 } ]
 
@@ -425,6 +536,26 @@ animations = [ {
 "loop": true,
 "name": "default",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 338 ), ExtResource( 345 ), ExtResource( 343 ), ExtResource( 346 ), ExtResource( 347 ), ExtResource( 339 ), ExtResource( 341 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 332 ), ExtResource( 323 ), ExtResource( 327 ), ExtResource( 328 ), ExtResource( 324 ), ExtResource( 329 ), ExtResource( 331 ) ],
+"loop": false,
+"name": "die",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 333 ), ExtResource( 325 ), ExtResource( 330 ), ExtResource( 348 ), ExtResource( 342 ), ExtResource( 336 ), ExtResource( 337 ) ],
+"loop": false,
+"name": "hurt",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 167 ), ExtResource( 168 ), ExtResource( 317 ), ExtResource( 169 ), ExtResource( 326 ), ExtResource( 334 ), ExtResource( 335 ) ],
+"loop": false,
+"name": "attack",
+"speed": 4.0
 } ]
 
 [sub_resource type="SpriteFrames" id=8]
@@ -432,6 +563,26 @@ animations = [ {
 "frames": [ ExtResource( 155 ), ExtResource( 147 ), ExtResource( 148 ), ExtResource( 144 ), ExtResource( 149 ), ExtResource( 145 ), ExtResource( 150 ), ExtResource( 151 ), ExtResource( 152 ), ExtResource( 153 ) ],
 "loop": true,
 "name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 361 ), ExtResource( 366 ), ExtResource( 382 ), ExtResource( 349 ), ExtResource( 381 ), ExtResource( 368 ), ExtResource( 372 ), ExtResource( 350 ), ExtResource( 351 ), ExtResource( 378 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 354 ), ExtResource( 385 ), ExtResource( 383 ), ExtResource( 363 ), ExtResource( 357 ), ExtResource( 379 ), ExtResource( 370 ), ExtResource( 376 ), ExtResource( 380 ), ExtResource( 362 ) ],
+"loop": false,
+"name": "die",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 353 ), ExtResource( 352 ), ExtResource( 358 ), ExtResource( 355 ), ExtResource( 367 ), ExtResource( 384 ), ExtResource( 386 ), ExtResource( 369 ), ExtResource( 371 ), ExtResource( 359 ) ],
+"loop": false,
+"name": "hurt",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 340 ), ExtResource( 344 ), ExtResource( 375 ), ExtResource( 377 ), ExtResource( 364 ), ExtResource( 360 ), ExtResource( 356 ), ExtResource( 365 ), ExtResource( 373 ), ExtResource( 374 ) ],
+"loop": false,
+"name": "attack",
 "speed": 5.0
 } ]
 
@@ -442,29 +593,25 @@ animations = [ {
 "name": "default",
 "speed": 5.5
 }, {
-
-"frames": [ ExtResource( 38 ), ExtResource( 28 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 23 ) ],
-"loop": true,
-"name": "hurt",
-
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 24 ), ExtResource( 33 ), ExtResource( 62 ), ExtResource( 54 ), ExtResource( 50 ), ExtResource( 49 ), ExtResource( 55 ), ExtResource( 61 ), ExtResource( 51 ), ExtResource( 52 ) ],
-"loop": true,
-"name": "die",
-"speed": 5.0
-}, {
-
 "frames": [ ExtResource( 65 ), ExtResource( 60 ), ExtResource( 71 ), ExtResource( 53 ), ExtResource( 70 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 58 ), ExtResource( 48 ), ExtResource( 66 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 56 ), ExtResource( 67 ), ExtResource( 69 ), ExtResource( 47 ), ExtResource( 72 ), ExtResource( 57 ), ExtResource( 68 ), ExtResource( 59 ), ExtResource( 63 ), ExtResource( 64 ) ],
-"loop": true,
-"name": "attack",
-
+"frames": [ ExtResource( 24 ), ExtResource( 33 ), ExtResource( 62 ), ExtResource( 54 ), ExtResource( 50 ), ExtResource( 49 ), ExtResource( 55 ), ExtResource( 61 ), ExtResource( 51 ), ExtResource( 52 ) ],
+"loop": false,
+"name": "die",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 38 ), ExtResource( 28 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 23 ) ],
+"loop": false,
+"name": "hurt",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 56 ), ExtResource( 67 ), ExtResource( 69 ), ExtResource( 47 ), ExtResource( 72 ), ExtResource( 57 ), ExtResource( 68 ), ExtResource( 59 ), ExtResource( 63 ), ExtResource( 64 ) ],
+"loop": false,
+"name": "attack",
+"speed": 6.0
 } ]
 
 [node name="Mob" type="Area2D"]
@@ -500,7 +647,8 @@ visible = false
 position = Vector2( 0.283638, -3.74183 )
 scale = Vector2( 0.0591754, 0.0701211 )
 frames = SubResource( 3 )
-animation = "walk"
+animation = "hurt"
+frame = 9
 
 [node name="Warrior2" type="AnimatedSprite" parent="."]
 visible = false
@@ -514,6 +662,7 @@ visible = false
 position = Vector2( -6.28876, 8.27539 )
 scale = Vector2( 0.138243, 0.129601 )
 frames = SubResource( 5 )
+animation = "walk"
 
 [node name="Shooter1" type="AnimatedSprite" parent="."]
 visible = false
@@ -524,15 +673,17 @@ animation = "walk"
 
 [node name="Shooter2" type="AnimatedSprite" parent="."]
 visible = false
-position = Vector2( 15.1467, -8.22486 )
-scale = Vector2( 0.0878157, 0.0844264 )
+position = Vector2( 2.86246, -5.54753 )
+scale = Vector2( 0.0705261, 0.0799753 )
 frames = SubResource( 7 )
+animation = "walk"
 
 [node name="Shooter3" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( 0.945796, -10.9386 )
 scale = Vector2( 0.138389, 0.128143 )
 frames = SubResource( 8 )
+animation = "walk"
 
 [node name="Top_unit" type="AnimatedSprite" parent="."]
 visible = false

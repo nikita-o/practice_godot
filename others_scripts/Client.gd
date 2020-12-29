@@ -216,7 +216,8 @@ func _listener(_prm):
 				var _id = connection.get_32()
 				var level = connection.get_32()
 				var health = connection.get_32()
-				self.call_deferred("emit_signal","UpgradeTown", level, health)
+				if _id == id_player:
+					self.call_deferred("emit_signal","UpgradeTown", level, health)
 			response.Market:
 				self.call_deferred("emit_signal","Market")
 			response.CaptureMine:

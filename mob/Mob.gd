@@ -41,6 +41,7 @@ func _initiz(id):
 	$Label.visible = true
 	Animate.visible = true
 	Animate.play("default")
+	$Mine.color = Color(0,0,1,0.3)
 
 func _ready():
 	position_cell = Vector2(int(position.x / 32), int(position.y / 32))
@@ -55,6 +56,7 @@ func _process(delta):
 		p += 1
 	else:
 		if path.empty():
+			Animate.play("default")
 			set_process(false)
 			return
 		s = path.pop_front()
@@ -89,12 +91,26 @@ func _click_cell(pos):
 	if pos == position_cell:
 		get_node("/root/Game").select_mob = self
 
-#func attack():
-#	pass
+func die():
+	Animate.play("die")	
+	pass
+
+func attack():
+	Animate.play("attack")
+	yield(get_tree().create_timer(2.5), "timeout")
+	Animate.play("default")
+	pass
+
+func hurt():
+	Animate.play("hurt")
+	yield(get_tree().create_timer(2.5), "timeout")
+	Animate.play("default")
+	pass
 
 func move(pos, _path):
 	position_cell = pos
 	self.path += _path
+	Animate.play("walk")
 	set_process(true)
 
 func capture_mine(enemy):

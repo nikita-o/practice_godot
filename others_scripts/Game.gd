@@ -83,9 +83,9 @@ func _Select_Mob(pos, action_points):
 	print("\tSelectUnit: ", pos)
 	emit_signal("click_cell", pos)
 	if my_unit != null:
-		my_unit.get_node("Sprite").visible = false
+		my_unit.get_node("Mine").visible = false
 	my_unit = select_mob
-	my_unit.get_node("Sprite").visible = true
+	my_unit.get_node("Mine").visible = true
 	my_unit.actionPoints = action_points
 	$interface/Control/Panel/Panel/attack.text = String(my_unit.attack)
 	$interface/Control/Panel/Panel/defense.text = String(my_unit.defense)
@@ -106,14 +106,31 @@ func _spawn_unit(enemy, pos: Vector2, id, attack, defense, damage, health, actio
 	u.rangeAttack = rangeAttack
 	u.shootingDamage = shootingDamage
 	u.get_node("Label").text = String(u.health)
-	if enemy: u.get_node("Label").modulate = Color(0,0,255)
-	else: u.get_node("Label").modulate = Color(255,0,0)
+	if enemy: u.get_node("Label").modulate = Color(255,0,0)
+	else: u.get_node("Label").modulate = Color(0,0,255)
 	u._initiz(id)
 	get_node("Map").add_child(u)
 	print("\tSpawn unit ", id)
 
 func _upgrade_town(level, health):
 	print("\tupgrade town! lvl = ", level, ", health = ", health)
+	$interface/Control/Panel2/Castle_hp.text = String(health)
+	match level:
+		1: 
+			$interface/Control/Panel/cost_town.visible = false
+			$interface/Control/Panel/lvl0.visible = false
+			$interface/Control/Panel/cost_town1.visible = true
+			$interface/Control/Panel/lvl1.visible = true
+		2:
+			$interface/Control/Panel/cost_town1.visible = false
+			$interface/Control/Panel/lvl1.visible = false
+			$interface/Control/Panel/cost_town2.visible = true
+			$interface/Control/Panel/lvl2.visible = true 
+		3: 
+			$interface/Control/Panel/cost_town2.visible = false
+			$interface/Control/Panel/lvl2.visible = false
+
+	
 
 func _market():
 	pass
@@ -125,9 +142,16 @@ func _attack(defens_health, defens_position):
 	my_unit.actionPoints = 0
 	$interface/Control/Panel/Panel/actionPoints.text = String(my_unit.actionPoints)
 	select_mob.health = defens_health
-	select_mob.get_node("Label").text = String(select_mob.health)
+	select_mob.get_node("Label").text = String(select_mob.health)	
+	my_unit.attack()
+	var enemy = select_mob
 	if (defens_health <= 0):
-		get_node("Map").remove_child(select_mob)
+		enemy.die()
+		yield(get_tree().create_timer(2.5), "timeout")
+		get_node("Map").remove_child(enemy)
+	else:
+		enemy.hurt() 
+		
 
 func attack_town(health_town):
 	print("\tTown hp = ", health_town)
