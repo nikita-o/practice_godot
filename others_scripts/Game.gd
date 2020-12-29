@@ -112,9 +112,13 @@ func _spawn_unit(enemy, pos: Vector2, id, attack, defense, damage, health, actio
 	get_node("Map").add_child(u)
 	print("\tSpawn unit ", id)
 
-func _upgrade_town(level, health):
+func _upgrade_town(level, health, enemy):
 	print("\tupgrade town! lvl = ", level, ", health = ", health)
 	$interface/Control/Panel2/Castle_hp.text = String(health)
+	if enemy == 0:
+		$Map/Town1/Label.text = String(health)
+	else:
+		$Map/Town2/Label.text = String(health)
 	match level:
 		1: 
 			$interface/Control/Panel/cost_town.visible = false
@@ -130,28 +134,30 @@ func _upgrade_town(level, health):
 			$interface/Control/Panel/cost_town2.visible = false
 			$interface/Control/Panel/lvl2.visible = false
 
-	
-
 func _market():
 	pass
 
-func _attack(defens_health, defens_position):
-	print("\tAttack: ", defens_position)
-	print("\thp enemy: ", defens_health)
-	emit_signal("click_cell", defens_position)
-	my_unit.actionPoints = 0
-	$interface/Control/Panel/Panel/actionPoints.text = String(my_unit.actionPoints)
-	select_mob.health = defens_health
-	select_mob.get_node("Label").text = String(select_mob.health)	
-	my_unit.attack()
-	var enemy = select_mob
-	if (defens_health <= 0):
-		enemy.die()
+func _attack(_atack_position, _atack_health, _defens_position, _defens_health, enemy):
+	print("\tAttack: ", _defens_position)
+	print("\thp enemy: ", _defens_health)
+#	ATACK
+	emit_signal("click_cell", _atack_position)
+	var atack_unit = select_mob
+	if enemy:
+		atack_unit.actionPoints = 0
+		$interface/Control/Panel/Panel/actionPoints.text = String(atack_unit.actionPoints)
+	atack_unit.attack()
+#	DEFENSE
+	emit_signal("click_cell", _defens_position)
+	var defense_unit = select_mob
+	defense_unit.health = _defens_health
+	defense_unit.get_node("Label").text = String(defense_unit.health)
+	if (_defens_health <= 0):
+		defense_unit.die()
 		yield(get_tree().create_timer(2.5), "timeout")
-		get_node("Map").remove_child(enemy)
+		get_node("Map").remove_child(defense_unit)
 	else:
-		enemy.hurt() 
-		
+		defense_unit.hurt()
 
 func attack_town(health_town, enemy):
 	print("\tTown hp = ", health_town)
@@ -159,7 +165,6 @@ func attack_town(health_town, enemy):
 		$Map/Town1/Label.text = String(health_town)
 	else:
 		$Map/Town2/Label.text = String(health_town)
-#	$interface/Control/Panel2/Castle_hp.text = String(health_town)
 
 func _capture_mine(pos, enemy):
 	print("\tcapture mine: ", pos)

@@ -191,7 +191,7 @@ func _listener(_prm):
 				var _defens_id = connection.get_32()
 				var _defens_position = Vector2(connection.get_32(), connection.get_32())
 				var _defens_health = connection.get_32()
-				self.call_deferred("emit_signal", "Attack", _defens_health, _defens_position)
+				self.call_deferred("emit_signal", "Attack", _atack_position, _atack_health, _defens_position, _defens_health, _atack_id == id_player)
 			response.AttackTown:
 				var _unit_id = connection.get_32()
 				var _unit_position = Vector2(connection.get_32(), connection.get_32())
@@ -217,7 +217,7 @@ func _listener(_prm):
 				var level = connection.get_32()
 				var health = connection.get_32()
 				if _id == id_player:
-					self.call_deferred("emit_signal","UpgradeTown", level, health)
+					self.call_deferred("emit_signal","UpgradeTown", level, health, _id)
 			response.Market:
 				self.call_deferred("emit_signal","Market")
 			response.CaptureMine:
