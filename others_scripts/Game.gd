@@ -153,8 +153,13 @@ func _attack(defens_health, defens_position):
 		enemy.hurt() 
 		
 
-func attack_town(health_town):
+func attack_town(health_town, enemy):
 	print("\tTown hp = ", health_town)
+	if enemy == 0:
+		$Map/Town1/Label.text = String(health_town)
+	else:
+		$Map/Town2/Label.text = String(health_town)
+#	$interface/Control/Panel2/Castle_hp.text = String(health_town)
 
 func _capture_mine(pos, enemy):
 	print("\tcapture mine: ", pos)

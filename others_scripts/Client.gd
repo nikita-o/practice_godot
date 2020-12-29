@@ -199,7 +199,7 @@ func _listener(_prm):
 				var _town_id = connection.get_32()
 				var _town_position = Vector2(connection.get_32(), connection.get_32())
 				var _town_health = connection.get_32()
-				self.call_deferred("emit_signal", "AttackTown", _town_health)
+				self.call_deferred("emit_signal", "AttackTown", _town_health, _town_id)
 			response.SpawnUnit:
 				var _id = connection.get_32()
 				var _position = Vector2(connection.get_32(), connection.get_32())

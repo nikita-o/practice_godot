@@ -103,26 +103,6 @@ margin_right = 674.0
 margin_bottom = 29.0
 text = "0"
 
-[node name="Castle" type="Label" parent="Control/Panel2"]
-margin_left = 802.0
-margin_top = 15.0
-margin_right = 871.0
-margin_bottom = 29.0
-text = "Hp town = "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Castle_hp" type="Label" parent="Control/Panel2"]
-margin_left = 874.0
-margin_top = 16.0
-margin_right = 914.0
-margin_bottom = 30.0
-text = "20"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Panel" type="Panel" parent="Control"]
 anchor_left = 1.0
 anchor_right = 1.0

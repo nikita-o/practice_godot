@@ -2152,3 +2152,39 @@ position = Vector2( 1200, 848 )
 
 [node name="Mob12" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1232, 720 )
+
+[node name="Town1" type="ColorRect" parent="."]
+margin_right = 104.0
+margin_bottom = 99.0
+color = Color( 0.243137, 0.243137, 0.243137, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Town1"]
+margin_left = -8.0
+margin_top = 24.0
+margin_right = 32.0
+margin_bottom = 40.0
+rect_scale = Vector2( 3, 3 )
+text = "20"
+align = 1
+
+[node name="Town2" type="ColorRect" parent="."]
+margin_left = 2168.84
+margin_top = 1529.83
+margin_right = 2272.84
+margin_bottom = 1628.83
+color = Color( 0.243137, 0.243137, 0.243137, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Town2"]
+margin_left = -8.66846
+margin_top = 30.1746
+margin_right = 31.3315
+margin_bottom = 44.1746
+rect_scale = Vector2( 3, 3 )
+text = "20"
+align = 1
