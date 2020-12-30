@@ -38,6 +38,7 @@ func _ready():
 	_error = Client.connect("Error_print", self, "print_error")
 	_error = Client.connect("Turn", self, "_Turn")
 	_error = Client.connect("Ready", self, "_my_ready")
+	_error = Client.connect("Ping", self, "_ping")
 	
 	Client._action(button.READY, Vector2.ZERO, 0)
 #	update_resources(Storage.gold, Storage.wood, Storage.rock, Storage.crystall)
@@ -207,3 +208,6 @@ func print_error(_text):
 	$interface/Control/Error.visible = true
 	yield(get_tree().create_timer(5.0), "timeout")
 	$interface/Control/Error.visible = false
+
+func _ping(ping):
+	$interface/Control/Panel2/Ping.text = String(ping)

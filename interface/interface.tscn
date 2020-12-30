@@ -105,20 +105,42 @@ text = "0"
 
 [node name="ColorRect" type="ColorRect" parent="Control/Panel2"]
 modulate = Color( 0.992157, 1, 0, 1 )
-margin_left = 943.378
+margin_left = 781.28
 margin_top = 6.58919
-margin_right = 975.378
+margin_right = 813.28
 margin_bottom = 32.5892
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Control/Panel2"]
-margin_left = 890.546
-margin_top = 13.0595
-margin_right = 930.546
-margin_bottom = 27.0595
+margin_left = 727.389
+margin_top = 14.119
+margin_right = 767.389
+margin_bottom = 28.119
 text = "TURN:"
+
+[node name="Label2" type="Label" parent="Control/Panel2"]
+visible = false
+margin_left = 921.733
+margin_top = 11.6541
+margin_right = 961.733
+margin_bottom = 25.6541
+text = "PING:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ping" type="Label" parent="Control/Panel2"]
+visible = false
+margin_left = 967.344
+margin_top = 12.2921
+margin_right = 1007.34
+margin_bottom = 26.2921
+text = "300"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Panel" type="Panel" parent="Control"]
 anchor_left = 1.0

@@ -48,6 +48,7 @@ margin_bottom = 156.679
 text = "Surrender"
 
 [node name="Cheat" type="Button" parent="Control/Panel"]
+visible = false
 margin_left = 27.6832
 margin_top = 224.679
 margin_right = 120.683

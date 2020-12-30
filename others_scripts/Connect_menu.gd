@@ -12,7 +12,8 @@ func _on_exit_pressed():
 
 func _on_connect_pressed():
 	print("Connecting...")
-#	get_tree().change_scene("res://Main_menu.tscn")
+	Client.host = String(get_node("host").text)
+	Client.port = int(get_node("port").text)
 	Client.client_name = get_node("login").text
 	Client.client_password = get_node("password").text
 	Client.connect_to_server()

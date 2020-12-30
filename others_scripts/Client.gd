@@ -62,6 +62,7 @@ signal UpdateResources
 signal AttackTown
 signal Error_print
 signal Turn
+signal Ping
 signal Ready
 
 func _ready():
@@ -175,6 +176,7 @@ func _listener(_prm):
 			response.Ping:
 				var Tick = connection.get_32()
 				var LastPing = connection.get_32()
+				self.call_deferred("emit_signal", "Ping", LastPing)
 				self.call_deferred("ping", Tick, LastPing)
 			response.InitGame:
 				var _id = connection.get_32()
