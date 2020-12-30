@@ -60,6 +60,7 @@ signal CaptureMine
 signal UpdateResources
 signal AttackTown
 signal Error_print
+signal Turn
 
 func _ready():
 	pass
@@ -139,6 +140,7 @@ func next_turn(id):
 	print("\tnextTurn: ", id, " ME ", id_player)
 	if id_player == id: turn = true
 	else: turn = false
+	emit_signal("Turn", turn)
 
 func error_packet(id, msg):
 	print("\tErrorPocket: ", id, " msg: ", msg)

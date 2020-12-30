@@ -35,6 +35,12 @@ func _ready():
 	_error = Client.connect("UpdateResources", self, "update_resources")
 	_error = Client.connect("AttackTown", self, "attack_town")
 	_error = Client.connect("Error_print", self, "print_error")
+	_error = Client.connect("Turn", self, "_Turn")
+
+func _Turn(turn):
+	if turn: $interface/Control/Panel2/ColorRect.color = Color(0,255,0)
+	else: $interface/Control/Panel2/ColorRect.color = Color(255,0,0)
+	pass
 
 func c_pause():
 	$pause/Control.visible = true
