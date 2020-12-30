@@ -2094,7 +2094,7 @@ resource_local_to_scene = true
 3/shapes = [  ]
 3/z_index = 0
 
-[sub_resource type="TileSet" id=12]
+[sub_resource type="TileSet" id=11]
 0/name = "jW8J7Z.png 0"
 0/texture = ExtResource( 15 )
 0/tex_offset = Vector2( 0, 0 )
@@ -2138,7 +2138,7 @@ resource_local_to_scene = true
 2/shapes = [  ]
 2/z_index = 0
 
-[sub_resource type="TileSet" id=11]
+[sub_resource type="TileSet" id=12]
 6/name = "Forest-Top-Down-2D-Game-Tileset3-720x480.png 6"
 6/texture = ExtResource( 11 )
 6/tex_offset = Vector2( 0, 0 )
@@ -2276,14 +2276,8 @@ resource_local_to_scene = true
 16/shape_offset = Vector2( 0, 0 )
 16/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 16/shape_one_way = false
-16/shape_one_way_margin = 1.0
-16/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": null,
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
+16/shape_one_way_margin = 0.0
+16/shapes = [  ]
 16/z_index = 0
 17/name = "jW8J7Z.png 17"
 17/texture = ExtResource( 15 )
@@ -2465,14 +2459,14 @@ __meta__ = {
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = 7
-tile_set = SubResource( 12 )
+tile_set = SubResource( 11 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 86, 2, 0, 589958, 1, 0, 2687051, 1, 0, 3670077, 1, 0, 5767171, 1, 0, 6160433, 2, 0 )
 
 [node name="rock and cristall" type="TileMap" parent="."]
 z_index = 1
-tile_set = SubResource( 11 )
+tile_set = SubResource( 12 )
 cell_size = Vector2( 32, 32 )
 cell_custom_transform = Transform2D( 32, 0, 0, 32, 0, 0 )
 format = 1

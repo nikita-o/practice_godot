@@ -104,10 +104,14 @@ margin_bottom = 29.0
 text = "0"
 
 [node name="ColorRect" type="ColorRect" parent="Control/Panel2"]
+modulate = Color( 0.992157, 1, 0, 1 )
 margin_left = 943.378
 margin_top = 6.58919
 margin_right = 975.378
 margin_bottom = 32.5892
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Control/Panel2"]
 margin_left = 890.546

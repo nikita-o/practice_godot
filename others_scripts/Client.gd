@@ -31,6 +31,7 @@ enum response {
 	nextTurn    = 27,
 	Resources	= 28,
 	AttackTown	= 29,
+	Ready = 30,
 	}
 
 enum request {
@@ -61,6 +62,7 @@ signal UpdateResources
 signal AttackTown
 signal Error_print
 signal Turn
+signal Ready
 
 func _ready():
 	pass
@@ -160,6 +162,9 @@ func _listener(_prm):
 		var size = connection.get_32()
 		self.call_deferred("print_head_packet", id_packet, packet, size)
 		match packet:
+			response.Ready:
+				self.call_deferred("emit_signal", "Ready")
+				pass
 			response.accept:
 				var _f = connection.get_32()
 				self.call_deferred("accept")
@@ -273,10 +278,6 @@ func start_game():
 	send_packet(request.start_game, data)
 
 func _action(button: int, pos: Vector2, param: int):
-	if !turn: 
-		print("\nNOT our turn!\n")
-		emit_signal("Error_print", "NOT our turn!")
-		return
 	var data = StreamPeerBuffer.new()
 	data.put_32(button)
 	data.put_32(pos.x)

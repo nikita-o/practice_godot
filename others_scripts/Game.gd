@@ -14,6 +14,7 @@ enum button {
 	NextTurn = 6,
 	Cheats = 7,
 	Give_up = 8,
+	READY = 9,
 }
 
 func _ready():
@@ -36,9 +37,16 @@ func _ready():
 	_error = Client.connect("AttackTown", self, "attack_town")
 	_error = Client.connect("Error_print", self, "print_error")
 	_error = Client.connect("Turn", self, "_Turn")
+	_error = Client.connect("Ready", self, "_my_ready")
 	
+	Client._action(button.READY, Vector2.ZERO, 0)
+#	update_resources(Storage.gold, Storage.wood, Storage.rock, Storage.crystall)
+#	_Turn(Storage.turn)
+
+func _my_ready():
 	update_resources(Storage.gold, Storage.wood, Storage.rock, Storage.crystall)
 	_Turn(Storage.turn)
+	print("\nGAME STARTED\n")
 
 func _Turn(turn):
 	if turn: $interface/Control/Panel2/ColorRect.color = Color(0,255,0)
