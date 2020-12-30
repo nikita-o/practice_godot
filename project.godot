@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Client="*res://others_scripts/Client.gd"
+Storage="*res://others_scripts/storage.gd"
 
 [display]
 

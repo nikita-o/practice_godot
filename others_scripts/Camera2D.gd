@@ -2,7 +2,7 @@ extends Camera2D
 
 var zoom_speed = 0.1
 const MIN_ZOOM = 0.3
-const MAX_ZOOM = 3
+const MAX_ZOOM = 1.5
 onready var LIMIT = get_node("../Map").position
 var SIZE_MAP_X = 2500
 var SIZE_MAP_Y = 1700

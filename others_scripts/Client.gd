@@ -123,23 +123,30 @@ func init_game(id):
 	var _err = get_tree().change_scene("res://Game.tscn")
 
 func update_resources(gold, wood, rock, crystall):
+	Storage.gold = gold
+	Storage.wood = wood
+	Storage.rock = rock
+	Storage.crystall = crystall
 	emit_signal("UpdateResources", gold, wood, rock, crystall)
 
 func end_game(id, place):
 	print("\tEND GAME!!! ", id, " ", place)
-	if id_player == id: print("\tYOU WIN!")
-	else: print("\tYOU LOSE!")
+	if id_player == id: 
+		Storage.win = true
+		print("\tYOU WIN!")
+	else: 
+		Storage.win = false
+		print("\tYOU LOSE!")
 	var data = StreamPeerBuffer.new()
 	data.put_32(0)
 	data.put_32(5)
 	send_packet(request.start_game, data)
-#	END GAME
-	var _err = get_tree().change_scene("res://Main_menu.tscn")
+	var _err = get_tree().change_scene("res://End_game.tscn")
 
 func next_turn(id):
 	print("\tnextTurn: ", id, " ME ", id_player)
-	if id_player == id: turn = true
-	else: turn = false
+	turn = id_player == id
+	Storage.turn = turn
 	emit_signal("Turn", turn)
 
 func error_packet(id, msg):
