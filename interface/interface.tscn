@@ -103,6 +103,19 @@ margin_right = 674.0
 margin_bottom = 29.0
 text = "0"
 
+[node name="ColorRect" type="ColorRect" parent="Control/Panel2"]
+margin_left = 943.378
+margin_top = 6.58919
+margin_right = 975.378
+margin_bottom = 32.5892
+
+[node name="Label" type="Label" parent="Control/Panel2"]
+margin_left = 890.546
+margin_top = 13.0595
+margin_right = 930.546
+margin_bottom = 27.0595
+text = "TURN:"
+
 [node name="Panel" type="Panel" parent="Control"]
 anchor_left = 1.0
 anchor_right = 1.0
